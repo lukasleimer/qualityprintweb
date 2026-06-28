@@ -1,0 +1,89 @@
+/* Contact Section Styles */
+.contact-page {
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.contact-page h1 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.subtitle {
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: #7f8c8d;
+    margin-bottom: var(--spacing-xl);
+}
+
+.contact-form {
+    margin: var(--spacing-xl) auto;
+    background-color: var(--light-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    transition: var(--transition);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 200px;
+}
+
+.contact-form button {
+    width: 100%;
+}
+
+/* CTA Section */
+.cta {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.cta h2 {
+    color: var(--light-text);
+    margin-bottom: var(--spacing-md);
+}
+
+.cta p {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+    color: #ecf0f1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: var(--spacing-md);
+    }
+}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Kontakt - Quality Print{% endblock %}
+
+{% block content %}
+    <div class="container contact-page">
+        <h1>Kontaktieren Sie uns</h1>
+        <p class="subtitle">Wir freuen uns auf Ihre Nachricht und werden Sie schnellstmöglich kontaktieren.</p>
+        
+        {% include 'components/contact_form.html' %}
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+        
+        try {
+            const response = await fetch('/kontakt/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                alert('Vielen Dank! Ihre Nachricht wurde versendet.');
+                document.getElementById('contactForm').reset();
+            } else {
+                alert('Fehler: ' + data.error);
+            }
+        } catch (error) {
+            alert('Fehler beim Versenden: ' + error);
+        }
+    });
+</script>
+{% endblock %}
