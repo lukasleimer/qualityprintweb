@@ -1,23 +1,137 @@
-<form id="contactForm" class="contact-form">
+<form id="contactForm" class="contact-form" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    
+    {% if form.errors %}
+    <div class="form-errors" style="background-color: var(--color-neutral-50); border: 1px solid var(--color-secondary); border-radius: 8px; padding: var(--space-4); margin-bottom: var(--space-4); color: var(--color-secondary);">
+        {% for field, errors in form.errors.items() %}
+            {% for error in errors %}
+                <p style="margin: 0; font-size: 0.875rem;">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
     <div class="form-group">
-        <label for="name">Name *</label>
-        <input type="text" id="name" name="name" required>
+        <label for="name">{{ form.name.label }}</label>
+        {% if form.name.errors %}
+            {{ form.name(class="form-control is-invalid") }}
+        {% else %}
+            {{ form.name(class="form-control") }}
+        {% endif %}
+        {% if form.name.errors %}
+            <div class="form-error">
+                {% for error in form.name.errors %}
+                    <span style="color: var(--color-secondary); font-size: 0.875rem;">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
     
     <div class="form-group">
-        <label for="email">Email *</label>
-        <input type="email" id="email" name="email" required>
+        <label for="email">{{ form.email.label }}</label>
+        {% if form.email.errors %}
+            {{ form.email(class="form-control is-invalid") }}
+        {% else %}
+            {{ form.email(class="form-control") }}
+        {% endif %}
+        {% if form.email.errors %}
+            <div class="form-error">
+                {% for error in form.email.errors %}
+                    <span style="color: var(--color-secondary); font-size: 0.875rem;">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
     
     <div class="form-group">
-        <label for="subject">Betreff *</label>
-        <input type="text" id="subject" name="subject" required>
+        <label for="subject">{{ form.subject.label }}</label>
+        {% if form.subject.errors %}
+            {{ form.subject(class="form-control is-invalid") }}
+        {% else %}
+            {{ form.subject(class="form-control") }}
+        {% endif %}
+        {% if form.subject.errors %}
+            <div class="form-error">
+                {% for error in form.subject.errors %}
+                    <span style="color: var(--color-secondary); font-size: 0.875rem;">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
     
     <div class="form-group">
-        <label for="message">Nachricht *</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
+        <label for="message">{{ form.message.label }}</label>
+        {% if form.message.errors %}
+            {{ form.message(class="form-control is-invalid") }}
+        {% else %}
+            {{ form.message(class="form-control") }}
+        {% endif %}
+        {% if form.message.errors %}
+            <div class="form-error">
+                {% for error in form.message.errors %}
+                    <span style="color: var(--color-secondary); font-size: 0.875rem;">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
     
-    <button type="submit" class="btn btn-primary">Nachricht senden</button>
+    <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
 </form>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    try {
+        const response = await fetch('{{ url_for("kontakt.send_message") }}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Show success message
+            const successDiv = document.createElement('div');
+            successDiv.style.cssText = 'background-color: #ecfdf5; border: 1px solid #10b981; border-radius: 8px; padding: var(--space-4); margin-bottom: var(--space-4); color: #065f46; font-size: 0.875rem;';
+            successDiv.textContent = data.message;
+            form.parentElement.insertBefore(successDiv, form);
+            
+            // Reset form
+            form.reset();
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => successDiv.remove(), 5000);
+        } else {
+            // Show error message
+            if (data.errors) {
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = 'background-color: var(--color-neutral-50); border: 1px solid var(--color-secondary); border-radius: 8px; padding: var(--space-4); margin-bottom: var(--space-4); color: var(--color-secondary);';
+                
+                for (const field in data.errors) {
+                    const errors = data.errors[field];
+                    errors.forEach(error => {
+                        const p = document.createElement('p');
+                        p.style.cssText = 'margin: 0; font-size: 0.875rem;';
+                        p.textContent = error;
+                        errorDiv.appendChild(p);
+                    });
+                }
+                
+                form.parentElement.insertBefore(errorDiv, form);
+            } else {
+                alert('Fehler: ' + (data.error || 'Unbekannter Fehler'));
+            }
+        }
+    } catch (error) {
+        alert('Fehler beim Versenden: ' + error.message);
+        console.error('Error:', error);
+    }
+});
+</script>

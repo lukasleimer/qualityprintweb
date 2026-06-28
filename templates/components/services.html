@@ -1,28 +1,186 @@
-<section class="services" id="services">
-    <div class="container">
-        <h2>Unsere Leistungen</h2>
-        <p class="section-subtitle">Alles was Sie für Ihre Drucksachen benötigen</p>
+<!-- ===== SERVICES SECTION ===== -->
+<!-- 
+    Premium Services section showcasing Quality Print offerings
+    
+    Structure:
+    - Section label, headline, introduction
+    - Service cards grid (extends value card system)
+    - Closing CTA
+    
+    Design Principles (from Navigation, Hero & About):
+    - Solid background (Gray-50)
+    - Generous whitespace
+    - Premium, minimal aesthetic
+    - Reusable card components with icon/image area
+    - Responsive grid (3-4 desktop, 2 tablet, 1 mobile)
+    
+    Component Reuse:
+    - Extends value card system (icon area added)
+    - Uses existing button system (closing CTA)
+    - Uses existing typography scale
+    - Uses existing responsive patterns
+-->
+
+<section class="services" id="services" aria-labelledby="services-heading">
+    <!-- Services Container -->
+    <div class="container services-container">
         
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Flyer & Broschüren</h3>
-                <p>Professionell gestaltete Flyer und Broschüren für Ihr Marketing.</p>
-            </div>
+        <!-- Section Header -->
+        <div class="services-header">
             
-            <div class="service-card">
-                <h3>Visitenkarten</h3>
-                <p>Hochwertige Visitenkarten mit individuellen Designs.</p>
-            </div>
+            <!-- Section Label -->
+            <p class="services-label">
+                Leistungsübersicht
+            </p>
             
-            <div class="service-card">
-                <h3>Banner & Poster</h3>
-                <p>Großformatige Drucke für Ihre Werbung.</p>
-            </div>
+            <!-- Main Headline -->
+            <h2 class="services-headline" id="services-heading">
+                Alles für Ihre
+                <span class="text-accent">Druckprojekte</span>
+            </h2>
             
-            <div class="service-card">
-                <h3>Etiketten & Aufkleber</h3>
-                <p>Individuell bedruckte Etiketten und Aufkleber.</p>
-            </div>
+            <!-- Introduction -->
+            <p class="services-intro">
+                Von klassischen Visitenkarten über Flyer bis zu großformatigen Bannern – 
+                wir bieten umfassende Druckdienstleistungen mit höchster Qualität.
+            </p>
+            
         </div>
+        
+        <!-- Services Grid (Extends value card system with icon area) -->
+        <div class="services-grid">
+            
+            <!-- Service Card 1: Business Cards -->
+            <div class="service-card">
+                
+                <!-- Icon/Image Placeholder -->
+                <div class="service-card-icon">
+                    <svg 
+                        class="service-icon-placeholder" 
+                        viewBox="0 0 100 100" 
+                        role="img"
+                        aria-label="Visitenkarten Icon"
+                    >
+                        <rect width="100" height="100" fill="#f3f4f6"/>
+                        <rect x="15" y="35" width="70" height="30" fill="#d97706" stroke="#0f172a" stroke-width="2"/>
+                        <text x="50" y="55" text-anchor="middle" font-family="system-ui" font-size="10" fill="#0f172a" font-weight="bold">
+                            Icon
+                        </text>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <h3 class="service-card-title">Visitenkarten</h3>
+                <p class="service-card-description">
+                    Hochwertige Visitenkarten mit individuellen Designs und Veredelungen.
+                </p>
+                
+            </div>
+            
+            <!-- Service Card 2: Flyers & Brochures -->
+            <div class="service-card">
+                
+                <!-- Icon/Image Placeholder -->
+                <div class="service-card-icon">
+                    <svg 
+                        class="service-icon-placeholder" 
+                        viewBox="0 0 100 100" 
+                        role="img"
+                        aria-label="Flyer und Broschüren Icon"
+                    >
+                        <rect width="100" height="100" fill="#f3f4f6"/>
+                        <rect x="15" y="20" width="70" height="60" fill="#d97706" stroke="#0f172a" stroke-width="2"/>
+                        <text x="50" y="55" text-anchor="middle" font-family="system-ui" font-size="10" fill="#0f172a" font-weight="bold">
+                            Icon
+                        </text>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <h3 class="service-card-title">Flyer & Broschüren</h3>
+                <p class="service-card-description">
+                    Professionell gestaltete Flyer und Broschüren für Ihre Marketingkampagnen.
+                </p>
+                
+            </div>
+            
+            <!-- Service Card 3: Banners & Posters -->
+            <div class="service-card">
+                
+                <!-- Icon/Image Placeholder -->
+                <div class="service-card-icon">
+                    <svg 
+                        class="service-icon-placeholder" 
+                        viewBox="0 0 100 100" 
+                        role="img"
+                        aria-label="Banner und Poster Icon"
+                    >
+                        <rect width="100" height="100" fill="#f3f4f6"/>
+                        <rect x="10" y="25" width="80" height="50" fill="#d97706" stroke="#0f172a" stroke-width="2"/>
+                        <text x="50" y="55" text-anchor="middle" font-family="system-ui" font-size="10" fill="#0f172a" font-weight="bold">
+                            Icon
+                        </text>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <h3 class="service-card-title">Banner & Poster</h3>
+                <p class="service-card-description">
+                    Großformatige Drucke für Messe, Werbung und Raumgestaltung.
+                </p>
+                
+            </div>
+            
+            <!-- Service Card 4: Labels & Stickers -->
+            <div class="service-card">
+                
+                <!-- Icon/Image Placeholder -->
+                <div class="service-card-icon">
+                    <svg 
+                        class="service-icon-placeholder" 
+                        viewBox="0 0 100 100" 
+                        role="img"
+                        aria-label="Etiketten und Aufkleber Icon"
+                    >
+                        <rect width="100" height="100" fill="#f3f4f6"/>
+                        <circle cx="35" cy="35" r="15" fill="#d97706" stroke="#0f172a" stroke-width="2"/>
+                        <circle cx="65" cy="65" r="15" fill="#d97706" stroke="#0f172a" stroke-width="2"/>
+                        <text x="50" y="55" text-anchor="middle" font-family="system-ui" font-size="8" fill="#0f172a" font-weight="bold">
+                            Icon
+                        </text>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <h3 class="service-card-title">Etiketten & Aufkleber</h3>
+                <p class="service-card-description">
+                    Individuell bedruckte Etiketten und Aufkleber mit verschiedenen Veredelungen.
+                </p>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Closing CTA Section -->
+        <div class="services-cta-section">
+            
+            <!-- CTA Text -->
+            <p class="services-cta-text">
+                Sie haben ein individuelles Druckprojekt?
+            </p>
+            
+            <!-- CTA Button -->
+            <a 
+                href="/kontakt" 
+                class="btn btn-primary btn-lg"
+                role="button"
+                aria-label="Zur Angebotsanfrage"
+            >
+                Jetzt Projekt anfragen
+            </a>
+            
+        </div>
+        
     </div>
 </section>
+

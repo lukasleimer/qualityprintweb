@@ -1,0 +1,110 @@
+<!-- ===== CONTACT CTA SECTION ===== -->
+<!-- 
+    Call-to-action section guiding visitors to contact Quality Print
+    
+    Structure:
+    - Section label, headline, description
+    - Primary CTA "Angebot anfordern" + Secondary CTA "Kontakt aufnehmen"
+    - Contact information (phone, email, address, hours)
+    
+    Design Principles:
+    - Solid Gray-50 background (final action section)
+    - Calm, trustworthy aesthetic
+    - Simple contact info display (no functional form)
+    - Complementary to References section (visual rhythm)
+    - Encourages direct engagement
+    
+    Component Reuse:
+    - Extends about section header pattern
+    - Uses existing button system (.btn, .btn-primary, .btn-secondary)
+    - Uses existing typography scale
+    - Uses existing responsive patterns
+-->
+
+<section class="contact-cta" id="contact-cta" aria-labelledby="contact-cta-heading">
+    <!-- Contact CTA Container -->
+    <div class="container contact-cta-container">
+        
+        <!-- Section Header -->
+        <div class="contact-cta-header">
+            
+            <!-- Section Label -->
+            <p class="contact-cta-label">
+                Kontakt
+            </p>
+            
+            <!-- Main Headline -->
+            <h2 class="contact-cta-headline" id="contact-cta-heading">
+                Lassen Sie uns
+                <span class="text-accent">zusammenarbeiten</span>
+            </h2>
+            
+            <!-- Introduction -->
+            <p class="contact-cta-intro">
+                Sie haben ein Projekt im Kopf oder möchten mehr über unsere Dienstleistungen erfahren? 
+                Wir freuen uns auf Ihre Anfrage – nehmen Sie noch heute Kontakt auf.
+            </p>
+            
+        </div>
+        
+        <!-- CTA Buttons Grid -->
+        <div class="contact-cta-buttons">
+            
+            <!-- Primary CTA: Quote Request -->
+            <a href="#contact-preview" class="btn btn-primary btn-lg">
+                Angebot anfordern
+            </a>
+            
+            <!-- Secondary CTA: Contact -->
+            <a href="#contact-preview" class="btn btn-secondary btn-lg">
+                Kontakt aufnehmen
+            </a>
+            
+        </div>
+        
+        <!-- Contact Information Grid -->
+        <div class="contact-info-grid">
+            
+            <!-- Contact Info Card 1: Phone -->
+            <div class="contact-info-card">
+                <h3 class="contact-info-title">Telefon</h3>
+                <p class="contact-info-value">
+                    <a href="tel:+43512123456">+43 (0) 512 123 456</a>
+                </p>
+                <p class="contact-info-note">Mo–Fr: 08:00–18:00</p>
+            </div>
+            
+            <!-- Contact Info Card 2: Email -->
+            <div class="contact-info-card">
+                <h3 class="contact-info-title">E-Mail</h3>
+                <p class="contact-info-value">
+                    <a href="mailto:kontakt@qualityprint.at">kontakt@qualityprint.at</a>
+                </p>
+                <p class="contact-info-note">Antwort innerhalb 24h</p>
+            </div>
+            
+            <!-- Contact Info Card 3: Address -->
+            <div class="contact-info-card">
+                <h3 class="contact-info-title">Adresse</h3>
+                <p class="contact-info-value">
+                    Quality Print GmbH<br>
+                    Musterstraße 123<br>
+                    6020 Innsbruck, Österreich
+                </p>
+                <p class="contact-info-note">Besuchen Sie uns</p>
+            </div>
+            
+            <!-- Contact Info Card 4: Hours -->
+            <div class="contact-info-card">
+                <h3 class="contact-info-title">Öffnungszeiten</h3>
+                <p class="contact-info-value">
+                    Mo–Fr: 08:00–18:00<br>
+                    Sa: 09:00–13:00
+                </p>
+                <p class="contact-info-note">Österreich (UTC+1)</p>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>

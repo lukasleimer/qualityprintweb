@@ -4,35 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Quality Print - Professionelle Druckdienstleistungen für Premium-Qualität">
+    <meta name="description" content="{% block meta_description %}Quality Print - Professionelle Druckdienstleistungen für Premium-Qualität{% endblock %}">
     <meta name="theme-color" content="#0f172a">
     <meta name="mobile-web-app-capable" content="yes">
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.base_url }}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}Quality Print - Professionelle Druckdienstleistungen{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Quality Print - Professionelle Druckdienstleistungen für Premium-Qualität{% endblock %}">
+    <meta property="og:url" content="{{ request.base_url }}">
+    <meta property="og:image" content="{{ request.base_url }}static/images/og-image.png">
+    <meta property="og:site_name" content="Quality Print">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Quality Print - Professionelle Druckdienstleistungen{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Quality Print - Professionelle Druckdienstleistungen für Premium-Qualität{% endblock %}">
+    <meta name="twitter:image" content="{{ request.base_url }}static/images/twitter-image.png">
+    
     <title>{% block title %}Quality Print - Professionelle Druckdienstleistungen{% endblock %}</title>
     
-    <!-- ===== STYLESHEETS (in order of specificity) ===== -->
+    <!-- ===== STYLESHEETS (Consolidated in style.css) ===== -->
     
     <!-- 1. DESIGN TOKENS (must be first!) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
     
-    <!-- 2. GLOBAL STYLES & BASE COMPONENTS -->
+    <!-- 2. ALL STYLES (imports all other CSS files in correct order) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
-    <!-- 3. TYPOGRAPHY UTILITIES -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/typography.css') }}">
-    
-    <!-- 4. LAYOUT, GRID & SPACING -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
-    
-    <!-- 5. SECTION-SPECIFIC STYLES -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-    
-    <!-- 6. UTILITY CLASSES & HELPERS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
     
     <!-- Extra CSS per page -->
     {% block extra_css %}{% endblock %}
@@ -50,7 +51,8 @@
     {% include 'components/footer.html' %}
     
     <!-- ===== SCRIPTS ===== -->
-    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+    <!-- Navigation interactions -->
+    <script src="{{ url_for('static', filename='js/navigation.js') }}" defer></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

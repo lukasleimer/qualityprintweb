@@ -1,17 +1,82 @@
-<header class="navbar">
-    <div class="container navbar-content">
-        <div class="logo">
-            <h1><a href="/">Quality Print</a></h1>
+<!-- Premium Navigation Bar -->
+<header class="navbar" role="banner">
+    <div class="container navbar-container">
+        <!-- Logo Section (Left) -->
+        <div class="navbar-logo">
+            <a href="/" class="logo-link" title="Quality Print - Premium Druckdienstleistungen">
+                <h1 class="logo-text">Quality Print</h1>
+            </a>
         </div>
         
-        <nav class="nav-menu">
-            <button class="menu-toggle" id="menuToggle">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/">Startseite</a></li>
-                <li><a href="#services">Leistungen</a></li>
-                <li><a href="/kontakt">Kontakt</a></li>
-                <li><a href="/impressum">Impressum</a></li>
+        <!-- Navigation Menu (Center) -->
+        <nav class="navbar-nav" role="navigation" aria-label="Hauptnavigation">
+            <!-- Mobile Menu Toggle -->
+            <button 
+                class="navbar-toggle" 
+                id="navbarToggle" 
+                aria-expanded="false"
+                aria-label="Navigationsmenü öffnen"
+                title="Menü"
+            >
+                <span class="toggle-icon">
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                </span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <ul class="navbar-links" id="navbarLinks">
+                <li class="nav-item">
+                    <a href="/" class="nav-link" data-active="true">Startseite</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Leistungen</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#quality" class="nav-link">Produkte</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">Über uns</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/kontakt" class="nav-link">Kontakt</a>
+                </li>
             </ul>
         </nav>
+        
+        <!-- CTA Button Section (Right) -->
+        <div class="navbar-cta">
+            <a href="/kontakt" class="btn btn-primary btn-sm" title="Angebot anfordern">
+                Angebot anfordern
+            </a>
+        </div>
     </div>
+    
+    <!-- Mobile Navigation Overlay -->
+    <nav class="navbar-mobile" id="navbarMobile" aria-hidden="true">
+        <ul class="mobile-links">
+            <li class="mobile-nav-item">
+                <a href="/" class="mobile-nav-link">Startseite</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#services" class="mobile-nav-link">Leistungen</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#quality" class="mobile-nav-link">Produkte</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#about" class="mobile-nav-link">Über uns</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="/kontakt" class="mobile-nav-link">Kontakt</a>
+            </li>
+            <li class="mobile-nav-divider"></li>
+            <li class="mobile-nav-item">
+                <a href="/kontakt" class="mobile-nav-cta btn btn-primary btn-block">
+                    Angebot anfordern
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>

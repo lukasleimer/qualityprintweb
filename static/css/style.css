@@ -1,11 +1,48 @@
 /* ============================================================================
-   GLOBAL STYLES
+   STYLE.CSS – MASTER STYLESHEET
    ============================================================================
    
-   Base styles, resets, and global typography.
+   Central import point for all CSS files.
+   
+   Load Order:
+   1. variables.css (must load in <head> before this file)
+   2. This file imports all others in correct specificity order
+   
    Design System: docs/DesignSystem.md
+   Architecture: docs/Sprint-02-Layout-System.md
    
 ============================================================================ */
+
+/* ============================================================================
+   IMPORTS - LOAD ORDER IS CRITICAL
+   ============================================================================ */
+
+/* 2. Global Styles & Resets */
+@import url('./reset.css');
+
+/* 3. Typography Utilities & Text Styles */
+@import url('./typography.css');
+
+/* 4. Layout, Grid & Container System */
+@import url('./layout.css');
+
+/* 5. Global Utilities & Helpers */
+@import url('./utilities.css');
+
+/* 6. Button System (Visual Foundation) */
+@import url('./buttons.css');
+
+/* 7. Section-Specific Styles (loaded after utilities for specificity) */
+@import url('./navbar.css');
+@import url('./hero.css');
+@import url('./about.css');
+@import url('./services.css');
+@import url('./quality.css');
+@import url('./references.css');
+@import url('./sustainability.css');
+@import url('./contact-preview.css');
+@import url('./contact.css');
+@import url('./footer.css');
 
 /* ============================================================================
    1. RESET & BASE

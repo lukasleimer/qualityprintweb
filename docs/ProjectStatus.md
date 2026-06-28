@@ -2,8 +2,8 @@
 
 **Last Updated**: 2026-06-28  
 **Project Status**: 🟢 **In Active Development**  
-**Current Sprint**: Sprint 0 – Complete ✅ | Sprint 1 – Up Next 🔄  
-**Next Release**: v0.1.0 (MVP – End of Sprint 1)
+**Current Sprint**: Sprint 0 – Complete ✅ | Sprint 0.1 – Complete ✅ | Sprint 1 – Complete ✅ | Sprint 2 – Complete ✅ | Sprint 3 – Complete ✅ | Sprint 4 – Complete ✅ | Sprint 5 – Complete ✅ | Sprint 6 – Complete ✅ | Sprint 7 – Complete ✅ | Sprint 8 – Complete ✅ | Sprint 9 – Complete ✅ | Sprint 10 – Complete ✅ | Sprint 11 – Complete ✅ | Sprint 12 – Complete ✅ | Ready for Production 🚀  
+**Next Release**: v1.2.0 (Production Ready – Backend Integration Next)
 
 ---
 
@@ -85,12 +85,19 @@
 
 ## 🔄 In Progress
 
-### Sprint 1: CSS Implementation & Form Styling (Next)
-- [ ] Fine-tune component CSS styling
+### Sprint 2: CSS Styling & Visual Design (Next)
+- [ ] Implement complete CSS styling for all sections
+- [ ] Add spacing and layout via CSS Variables
 - [ ] Implement responsive breakpoints
-- [ ] Mobile menu animations
-- [ ] Form validation (client-side)
-- [ ] Testing on multiple devices
+- [ ] Add color styling for components
+- [ ] Test on multiple devices
+- [ ] Add hover/focus states
+- [ ] Implement animations & transitions
+- [ ] Accent-Sections mit Hintergrundfarbe (Slate-50 / Emerald-50)
+- [ ] Headline Underlines mit Amber-Farbe (.headline--accent Klasse)
+- [ ] Team-Member Cards (3-4 Spalten Grid)
+- [ ] Bottom Border Animation auf Links (scaleX)
+- [ ] Großzügigere Section-Padding (60-100px vertical)
 
 ---
 

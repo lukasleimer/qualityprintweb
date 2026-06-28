@@ -1,10 +1,131 @@
+<!-- ===== HERO SECTION ===== -->
+<!-- 
+    Premium hero section defining the Quality Print brand promise
+    
+    Structure:
+    - Container with max-width for readability
+    - Content area: headline, description, CTAs
+    - Image area: placeholder for premium photography
+    - Optional features/trust section
+    
+    Design Principles (from navigation):
+    - Solid background (White)
+    - Generous whitespace
+    - Premium, minimal aesthetic
+    - Accessible button hierarchy
+    - Responsive two-column → single column
+-->
+
 <section class="hero">
-    <div class="hero-content">
-        <h1>Professionelle Druckdienstleistungen</h1>
-        <p class="hero-subtitle">Hochwertige Druckprodukte für Ihr Unternehmen</p>
-        <a href="/kontakt" class="btn btn-primary">Jetzt anfragen</a>
-    </div>
-    <div class="hero-image">
-        <!-- Platzhalter für Hintergrundbild -->
+    <!-- Hero Container -->
+    <div class="container hero-container">
+        <!-- Text Content Area (Left on Desktop) -->
+        <div class="hero-content">
+            <!-- Main Headline -->
+            <h1 class="hero-headline">
+                Hochwertige Druckprodukte
+                <span class="text-accent">für Ihren Erfolg</span>
+            </h1>
+            
+            <!-- Supporting Description -->
+            <p class="hero-description">
+                Wir bieten professionelle Druckdienstleistungen mit höchstem Qualitätsanspruch. 
+                Von Visitenkarten bis Großformate – alles aus einer Hand und regional verankert.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="hero-ctas">
+                <!-- Primary CTA -->
+                <a 
+                    href="/kontakt" 
+                    class="btn btn-primary btn-lg"
+                    role="button"
+                    aria-label="Zur Angebotsanfrage"
+                >
+                    Angebot anfordern
+                </a>
+                
+                <!-- Secondary CTA -->
+                <a 
+                    href="#services" 
+                    class="btn btn-secondary btn-lg"
+                    role="button"
+                    aria-label="Zu unseren Leistungen scrollen"
+                >
+                    Leistungen ansehen
+                </a>
+            </div>
+            
+            <!-- Optional Trust/Features Section -->
+            <div class="hero-trust">
+                <!-- Trust Badges -->
+                <div class="trust-badge">
+                    <span class="trust-icon">✓</span>
+                    <span class="trust-text">30 Jahre Erfahrung</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-icon">✓</span>
+                    <span class="trust-text">Höchste Qualität</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-icon">✓</span>
+                    <span class="trust-text">Regional verankert</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Area (Right on Desktop) -->
+        <div class="hero-image-wrapper">
+            <div class="hero-image">
+                <!-- 
+                    Image Placeholder
+                    Aspect ratio controlled by CSS (16:9)
+                    Image can be replaced without layout changes
+                -->
+                <svg 
+                    class="hero-placeholder" 
+                    viewBox="0 0 800 600" 
+                    preserveAspectRatio="xMidYMid slice"
+                    role="img"
+                    aria-label="Hero-Bildplatzhalter"
+                >
+                    <!-- Placeholder background -->
+                    <rect width="800" height="600" fill="#f3f4f6"/>
+                    
+                    <!-- Subtle grid pattern -->
+                    <defs>
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <rect width="40" height="40" fill="none"/>
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="800" height="600" fill="url(#grid)"/>
+                    
+                    <!-- Placeholder text -->
+                    <text 
+                        x="400" 
+                        y="300" 
+                        text-anchor="middle"
+                        font-family="system-ui, -apple-system, sans-serif"
+                        font-size="24"
+                        fill="#9ca3af"
+                        dominant-baseline="middle"
+                    >
+                        Premium Bildbereich
+                    </text>
+                </svg>
+                
+                <!-- Alt: img tag version (uncomment when real image available) -->
+                <!-- 
+                <img 
+                    src="{{ url_for('static', filename='images/hero.jpg') }}" 
+                    alt="Quality Print – Professionelle Druckdienstleistungen"
+                    class="hero-image-content"
+                    loading="lazy"
+                />
+                -->
+            </div>
+        </div>
     </div>
 </section>
+

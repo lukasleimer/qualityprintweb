@@ -1,0 +1,407 @@
+<!-- ===== REFERENCES SECTION ===== -->
+<!-- 
+    Project Gallery section showcasing Quality Print client work
+    
+    Structure:
+    - Section label, headline, introduction
+    - Project cards grid (extends service card system with image prominence)
+    - Closing CTA button
+    
+    Design Principles:
+    - White background (clean, premium showcase)
+    - Image-focused cards (visual hierarchy emphasis)
+    - Responsive grid (3 → 2 → 1 columns)
+    - Subtle hover effects
+    - Trust through visual examples
+    
+    Component Reuse:
+    - Extends service card system (image area + title + description)
+    - Uses existing button system (closing CTA)
+    - Uses existing typography scale
+    - Uses existing responsive patterns
+-->
+
+<section class="references" id="references" aria-labelledby="references-heading">
+    <!-- References Container -->
+    <div class="container references-container">
+        
+        <!-- Section Header -->
+        <div class="references-header">
+            
+            <!-- Section Label -->
+            <p class="references-label">
+                Unsere Arbeiten
+            </p>
+            
+            <!-- Main Headline -->
+            <h2 class="references-headline" id="references-heading">
+                Referenzen &amp;
+                <span class="text-accent">Projektbeispiele</span>
+            </h2>
+            
+            <!-- Introduction -->
+            <p class="references-intro">
+                Vertrauen entsteht durch sichtbare Ergebnisse. Werfen Sie einen Blick auf 
+                Projekte, die wir für unsere Kunden realisiert haben.
+            </p>
+            
+        </div>
+        
+        <!-- Projects Grid (Extends service card system with image prominence) -->
+        <div class="references-grid">
+            
+            <!-- Project Card 1 -->
+            <article class="reference-card">
+                
+                <!-- Image Placeholder -->
+                <div class="reference-card-image">
+                    <svg 
+                        class="reference-image-placeholder" 
+                        viewBox="0 0 600 400" 
+                        preserveAspectRatio="xMidYMid slice"
+                        role="img"
+                        aria-label="Projektbild-Platzhalter: Premium-Broschüren"
+                    >
+                        <!-- Placeholder background -->
+                        <rect width="600" height="400" fill="#e5e7eb"/>
+                        
+                        <!-- Subtle grid pattern -->
+                        <defs>
+                            <pattern id="grid-ref-1" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <rect width="40" height="40" fill="none" stroke="#d1d5db" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#grid-ref-1)"/>
+                        
+                        <!-- Center icon (folder/image) -->
+                        <circle cx="300" cy="200" r="50" fill="#d1d5db" opacity="0.6"/>
+                        <path d="M 280 210 L 300 190 L 320 210 Z M 280 210 L 280 230 L 320 230 L 320 210" fill="none" stroke="#9ca3af" stroke-width="2"/>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <div class="reference-card-content">
+                    
+                    <!-- Category Badge -->
+                    <span class="reference-category">Broschüren</span>
+                    
+                    <!-- Title -->
+                    <h3 class="reference-card-title">Premium-Broschüren</h3>
+                    
+                    <!-- Description -->
+                    <p class="reference-card-description">
+                        Hochwertige Broschüren für ein internationales Tech-Unternehmen mit innovativem Design und hochwertiger Verarbeitung.
+                    </p>
+                </div>
+                
+            </article>
+            
+            <!-- Project Card 2 -->
+            <article class="reference-card">
+                
+                <!-- Image Placeholder -->
+                <div class="reference-card-image">
+                    <svg 
+                        class="reference-image-placeholder" 
+                        viewBox="0 0 600 400" 
+                        preserveAspectRatio="xMidYMid slice"
+                        role="img"
+                        aria-label="Projektbild-Platzhalter: Visitenkarten"
+                    >
+                        <!-- Placeholder background -->
+                        <rect width="600" height="400" fill="#e5e7eb"/>
+                        
+                        <!-- Subtle grid pattern -->
+                        <defs>
+                            <pattern id="grid-ref-2" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <rect width="40" height="40" fill="none" stroke="#d1d5db" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#grid-ref-2)"/>
+                        
+                        <!-- Center icon (cards) -->
+                        <circle cx="300" cy="200" r="50" fill="#d1d5db" opacity="0.6"/>
+                        <rect x="270" y="180" width="40" height="30" fill="none" stroke="#9ca3af" stroke-width="2" rx="2"/>
+                        <rect x="290" y="200" width="40" height="30" fill="none" stroke="#9ca3af" stroke-width="2" rx="2"/>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <div class="reference-card-content">
+                    
+                    <!-- Category Badge -->
+                    <span class="reference-category">Visitenkarten</span>
+                    
+                    <!-- Title -->
+                    <h3 class="reference-card-title">Visitenkarten mit Spezialfinish</h3>
+                    
+                    <!-- Description -->
+                    <p class="reference-card-description">
+                        Elegante Visitenkarten mit mattem Finish und geprägte Veredelung für eine Premium-Designagentur.
+                    </p>
+                </div>
+                
+            </article>
+            
+            <!-- Project Card 3 -->
+            <article class="reference-card">
+                
+                <!-- Image Placeholder -->
+                <div class="reference-card-image">
+                    <svg 
+                        class="reference-image-placeholder" 
+                        viewBox="0 0 600 400" 
+                        preserveAspectRatio="xMidYMid slice"
+                        role="img"
+                        aria-label="Projektbild-Platzhalter: Kampagnenbanner"
+                    >
+                        <!-- Placeholder background -->
+                        <rect width="600" height="400" fill="#e5e7eb"/>
+                        
+                        <!-- Subtle grid pattern -->
+                        <defs>
+                            <pattern id="grid-ref-3" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <rect width="40" height="40" fill="none" stroke="#d1d5db" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#grid-ref-3)"/>
+                        
+                        <!-- Center icon (banner) -->
+                        <circle cx="300" cy="200" r="50" fill="#d1d5db" opacity="0.6"/>
+                        <rect x="250" y="185" width="100" height="40" fill="none" stroke="#9ca3af" stroke-width="2" rx="2"/>
+                        <line x1="260" y1="200" x2="340" y2="200" stroke="#9ca3af" stroke-width="1"/>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <div class="reference-card-content">
+                    
+                    <!-- Category Badge -->
+                    <span class="reference-category">Banner</span>
+                    
+                    <!-- Title -->
+                    <h3 class="reference-card-title">Großformatige Kampagnenbanner</h3>
+                    
+                    <!-- Description -->
+                    <p class="reference-card-description">
+                        Hochwertige Banner für internationale Messe und Event-Marketing mit präzisem Druck.
+                    </p>
+                </div>
+                
+            </article>
+            
+            <!-- Project Card 4 -->
+            <article class="reference-card">
+                
+                <!-- Image Placeholder -->
+                <div class="reference-card-image">
+                    <svg 
+                        class="reference-image-placeholder" 
+                        viewBox="0 0 600 400" 
+                        preserveAspectRatio="xMidYMid slice"
+                        role="img"
+                        aria-label="Projektbild-Platzhalter: Verpackungsdesign"
+                    >
+                        <!-- Placeholder background -->
+                        <rect width="600" height="400" fill="#e5e7eb"/>
+                        
+                        <!-- Subtle grid pattern -->
+                        <defs>
+                            <pattern id="grid-ref-4" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <rect width="40" height="40" fill="none" stroke="#d1d5db" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#grid-ref-4)"/>
+                        
+                        <!-- Center icon (box) -->
+                        <circle cx="300" cy="200" r="50" fill="#d1d5db" opacity="0.6"/>
+                        <path d="M 270 200 L 280 170 L 320 170 L 330 200 L 320 230 L 280 230 Z" fill="none" stroke="#9ca3af" stroke-width="2"/>
+                        <line x1="280" y1="170" x2="280" y2="230" stroke="#9ca3af" stroke-width="1"/>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <div class="reference-card-content">
+                    
+                    <!-- Category Badge -->
+                    <span class="reference-category">Verpackung</span>
+                    
+                    <!-- Title -->
+                    <h3 class="reference-card-title">Nachhaltige Verpackungen</h3>
+                    
+                    <!-- Description -->
+                    <p class="reference-card-description">
+                        Umweltfreundliche Verpackungslösungen für innovatives E-Commerce-Unternehmen mit recyceltem Material.
+                    </p>
+                </div>
+                
+            </article>
+            
+            <!-- Project Card 5 -->
+            <article class="reference-card">
+                
+                <!-- Image Placeholder -->
+                <div class="reference-card-image">
+                    <svg 
+                        class="reference-image-placeholder" 
+                        viewBox="0 0 600 400" 
+                        preserveAspectRatio="xMidYMid slice"
+                        role="img"
+                        aria-label="Projektbild-Platzhalter: Flyer-Kampagne"
+                    >
+                        <!-- Placeholder background -->
+                        <rect width="600" height="400" fill="#e5e7eb"/>
+                        
+                        <!-- Subtle grid pattern -->
+                        <defs>
+                            <pattern id="grid-ref-5" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <rect width="40" height="40" fill="none" stroke="#d1d5db" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#grid-ref-5)"/>
+                        
+                        <!-- Center icon (flyer) -->
+                        <circle cx="300" cy="200" r="50" fill="#d1d5db" opacity="0.6"/>
+                        <rect x="270" y="170" width="60" height="80" fill="none" stroke="#9ca3af" stroke-width="2" rx="2"/>
+                        <line x1="270" y1="185" x2="330" y2="185" stroke="#9ca3af" stroke-width="1"/>
+                        <line x1="270" y1="200" x2="330" y2="200" stroke="#9ca3af" stroke-width="1"/>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <div class="reference-card-content">
+                    
+                    <!-- Category Badge -->
+                    <span class="reference-category">Flyer</span>
+                    
+                    <!-- Title -->
+                    <h3 class="reference-card-title">Mehrseitige Flyer-Kampagne</h3>
+                    
+                    <!-- Description -->
+                    <p class="reference-card-description">
+                        Kreative Flyer-Serie für Finanzdienstleister mit komplexem Layout und Falzverarbeitung.
+                    </p>
+                </div>
+                
+            </article>
+            
+            <!-- Project Card 6 -->
+            <article class="reference-card">
+                
+                <!-- Image Placeholder -->
+                <div class="reference-card-image">
+                    <svg 
+                        class="reference-image-placeholder" 
+                        viewBox="0 0 600 400" 
+                        preserveAspectRatio="xMidYMid slice"
+                        role="img"
+                        aria-label="Projektbild-Platzhalter: Geschäftsbericht"
+                    >
+                        <!-- Placeholder background -->
+                        <rect width="600" height="400" fill="#e5e7eb"/>
+                        
+                        <!-- Subtle grid pattern -->
+                        <defs>
+                            <pattern id="grid-ref-6" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <rect width="40" height="40" fill="none" stroke="#d1d5db" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#grid-ref-6)"/>
+                        
+                        <!-- Center icon (book/report) -->
+                        <circle cx="300" cy="200" r="50" fill="#d1d5db" opacity="0.6"/>
+                        <path d="M 280 170 L 280 230 Q 300 240 320 230 L 320 170" fill="none" stroke="#9ca3af" stroke-width="2"/>
+                        <line x1="300" y1="170" x2="300" y2="240" stroke="#9ca3af" stroke-width="1"/>
+                    </svg>
+                </div>
+                
+                <!-- Card Content -->
+                <div class="reference-card-content">
+                    
+                    <!-- Category Badge -->
+                    <span class="reference-category">Geschäftsberichte</span>
+                    
+                    <!-- Title -->
+                    <h3 class="reference-card-title">Geschäftsbericht 2024</h3>
+                    
+                    <!-- Description -->
+                    <p class="reference-card-description">
+                        Professioneller Geschäftsbericht mit hochwertige Bindung und aufwendige Bildbearbeitung.
+                    </p>
+                </div>
+                
+            </article>
+            
+        </div>
+        
+        <!-- Closing CTA -->
+        <div class="references-cta-section">
+            <p class="references-cta-text">
+                Sie haben ein Projekt, das Sie realisieren möchten?
+            </p>
+            <a href="#contact-preview" class="btn btn-primary btn-lg">
+                Alle Projekte ansehen
+            </a>
+        </div>
+        
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS SECTION (SEPARATE) ===== -->
+<!-- 
+    Testimonials section - Customer social proof
+    Note: Separated from references for better component separation
+    Can be positioned after references or on dedicated page
+-->
+<!--
+<section class="references-testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+        <header class="testimonials-header">
+            <h2 id="testimonials-heading">Das sagen unsere Kunden</h2>
+            <p class="testimonials-intro">Vertrauen aus Erfahrung</p>
+        </header>
+        
+        <div class="testimonials-grid">
+            <blockquote class="testimonial">
+                <p>
+                    "Die Qualität unserer Drucke war beeindruckend. Das Team war sehr unterstützend 
+                    und hat alle unsere Wünsche erfüllt."
+                </p>
+                <footer>
+                    <strong>Max Mustermann</strong>
+                    <span class="testimonial-role">Geschäftsführer, Muster GmbH</span>
+                </footer>
+            </blockquote>
+
+            <blockquote class="testimonial">
+                <p>
+                    "Schnelle Lieferung, ausgezeichnete Qualität und fairer Preis. 
+                    Wir werden definitiv wiederkommen."
+                </p>
+                <footer>
+                    <strong>Anna Schmidt</strong>
+                    <span class="testimonial-role">Projektmanagerin, Design Studio</span>
+                </footer>
+            </blockquote>
+
+            <blockquote class="testimonial">
+                <p>
+                    "Das Verständnis für unsere Anforderungen und die technische Umsetzung 
+                    waren perfekt abgestimmt."
+                </p>
+                <footer>
+                    <strong>Thomas Weber</strong>
+                    <span class="testimonial-role">Agentur-Inhaber, Agentur XYZ</span>
+                </footer>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="references-cta">
+            <p>Möchten Sie uns kennenlernen? Lassen Sie uns von Ihrem Projekt erzählen!</p>
+            <a href="#contact-preview" class="btn btn-primary" aria-label="Zur Kontaktanfrage">
+                Projekt anfragen
+            </a>
+        </div>
+    </div>
+</section>

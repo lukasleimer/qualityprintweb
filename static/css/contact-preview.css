@@ -1,0 +1,516 @@
+/* ============================================================================
+   CONTACT CTA SECTION CSS – CALL-TO-ACTION & CONTACT INFO
+   ============================================================================ 
+   
+   Premium contact call-to-action section encouraging visitor engagement
+   Extends about section header patterns
+   
+   Design Principles:
+   - Solid Gray-50 background (final action section)
+   - Calm, trustworthy aesthetic
+   - Simple contact info display (no functional form)
+   - Complements References section (visual rhythm)
+   - Encourages direct engagement
+   
+   Component Reuse:
+   - Extends about section header pattern
+   - Uses existing button system (.btn, .btn-primary, .btn-secondary)
+   - Uses existing typography scale (label, headline, description, card text)
+   - Uses existing responsive patterns and breakpoints
+   - Uses all CSS variables (zero hardcodes)
+   
+   Files Referenced: 
+   - templates/components/contact-preview.html (semantic HTML structure)
+   - static/css/variables.css (design tokens)
+   - static/css/buttons.css (button system)
+   
+   ============================================================================ */
+
+/* ============================================================================
+   1. CONTACT CTA SECTION CONTAINER
+   ============================================================================ */
+
+.contact-cta {
+    /* Background: Solid Gray-50 (final action section) */
+    background-color: var(--color-neutral-50);
+    
+    /* Vertical padding: 120px desktop, responsive mobile */
+    padding: var(--space-30) var(--space-6);
+    
+    /* Semantic section styling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* No borders or additional decorations – clean, minimal */
+    position: relative;
+}
+
+.contact-cta-container {
+    /* Max-width inherited from global container */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16); /* 32px gap between sections */
+}
+
+/* ============================================================================
+   2. CONTACT CTA HEADER (Section Title Area)
+   ============================================================================ */
+
+.contact-cta-header {
+    /* Header section: label, headline, introduction */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+    text-align: center;
+    
+    /* Max width to keep text readable */
+    max-width: 650px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ============================================================================
+   3. CONTACT CTA LABEL (Section Title)
+   ============================================================================ */
+
+.contact-cta-label {
+    /* Typography: small uppercase label */
+    font-size: var(--font-size-sm); /* 14px desktop */
+    font-weight: var(--font-weight-semibold); /* 600 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    text-transform: uppercase;
+    
+    /* Color: Amber-600 accent */
+    color: var(--color-secondary);
+    
+    /* Spacing: comfortable margin below */
+    margin: 0;
+    
+    /* No transitions needed */
+}
+
+/* ============================================================================
+   4. CONTACT CTA HEADLINE (Main Title)
+   ============================================================================ */
+
+.contact-cta-headline {
+    /* Typography: main headline with accent support */
+    font-size: var(--font-size-3xl); /* 32px desktop */
+    font-weight: var(--font-weight-bold); /* 700 */
+    letter-spacing: var(--letter-spacing-tight); /* -0.5px */
+    line-height: 1.2;
+    
+    /* Color: primary slate */
+    color: var(--color-primary);
+    
+    /* Spacing */
+    margin: 0;
+    word-spacing: 100vw; /* Force each word to new line for responsiveness */
+}
+
+/* Accent text within headline */
+.contact-cta-headline .text-accent {
+    /* Color: Amber-600 for secondary emphasis */
+    color: var(--color-secondary);
+    
+    /* No additional styling – inherits headline font size/weight */
+}
+
+/* ============================================================================
+   5. CONTACT CTA INTRODUCTION
+   ============================================================================ */
+
+.contact-cta-intro {
+    /* Typography: supporting paragraph */
+    font-size: var(--font-size-base); /* 16px desktop */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.7;
+    
+    /* Color: secondary text (Slate-700) */
+    color: var(--color-neutral-700);
+    
+    /* Spacing and sizing */
+    margin: var(--space-2) 0 0 0;
+    max-width: 600px;
+    
+    /* Centered within container */
+}
+
+/* ============================================================================
+   6. CTA BUTTONS GRID (Primary + Secondary)
+   ============================================================================ */
+
+.contact-cta-buttons {
+    /* Button grid layout */
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-6); /* 12px between buttons */
+    
+    /* Centered alignment */
+    align-items: center;
+    justify-content: center;
+    
+    /* Full width of container */
+    width: 100%;
+    
+    /* Wrap buttons on smaller screens */
+    flex-wrap: wrap;
+    
+    /* Spacing: top margin for visual separation */
+    margin-top: var(--space-4); /* 8px */
+}
+
+/* ============================================================================
+   7. CONTACT INFORMATION GRID (4 Info Cards)
+   ============================================================================ */
+
+.contact-info-grid {
+    /* Responsive grid: 4 columns desktop, 2 tablet, 1 mobile */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    
+    /* Consistent spacing */
+    gap: var(--space-8); /* 16px – scales down on mobile */
+    
+    /* Full width of container */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    
+    /* Spacing: top margin for visual separation from buttons */
+    margin-top: var(--space-6); /* 24px */
+}
+
+/* ============================================================================
+   8. CONTACT INFORMATION CARD
+   ============================================================================ */
+
+.contact-info-card {
+    /* Base styling */
+    
+    /* Background: transparent (no card styling needed) */
+    background-color: transparent;
+    
+    /* Layout: flex column for vertical stacking */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3); /* 6px between elements */
+    
+    /* Alignment: content centered */
+    align-items: center;
+    text-align: center;
+    
+    /* Spacing */
+    padding: var(--space-4); /* 8px */
+    
+    /* No border or shadow – clean, minimal */
+}
+
+/* ============================================================================
+   9. CONTACT INFO TITLE
+   ============================================================================ */
+
+.contact-info-title {
+    /* Typography: card headline */
+    font-size: var(--font-size-base); /* 16px */
+    font-weight: var(--font-weight-semibold); /* 600 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.4;
+    
+    /* Color: primary (Slate-900) */
+    color: var(--color-primary);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================================
+   10. CONTACT INFO VALUE (Phone, Email, Address, Hours)
+   ============================================================================ */
+
+.contact-info-value {
+    /* Typography: contact information (larger, prominent) */
+    font-size: var(--font-size-base); /* 16px */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.6;
+    
+    /* Color: secondary text or primary if link */
+    color: var(--color-neutral-700);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+}
+
+/* Contact value links (phone, email) */
+.contact-info-value a {
+    /* Typography: preserve base styling */
+    font-size: inherit;
+    font-weight: inherit;
+    
+    /* Color: use secondary color for links */
+    color: var(--color-secondary);
+    text-decoration: none;
+    
+    /* Underline on hover */
+    transition: text-decoration 200ms ease-out;
+}
+
+.contact-info-value a:hover {
+    /* Underline on hover */
+    text-decoration: underline;
+}
+
+.contact-info-value a:focus {
+    /* Outline for keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ============================================================================
+   11. CONTACT INFO NOTE (Supporting Text)
+   ============================================================================ */
+
+.contact-info-note {
+    /* Typography: small supporting text */
+    font-size: var(--font-size-sm); /* 14px */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.5;
+    
+    /* Color: muted text (Slate-600) */
+    color: var(--color-neutral-600);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================================
+   12. RESPONSIVE DESIGN – TABLET (768px)
+   ============================================================================ */
+
+@media (max-width: 1023px) {
+    
+    /* Contact CTA section */
+    .contact-cta {
+        /* Reduced padding: 120px desktop → 80px tablet */
+        padding: var(--space-20) var(--space-6);
+    }
+    
+    /* Contact CTA headline */
+    .contact-cta-headline {
+        /* Smaller headline: 32px → 28px */
+        font-size: var(--font-size-2xl); /* 28px */
+    }
+    
+    /* CTA buttons */
+    .contact-cta-buttons {
+        /* Reduce gap: 12px → 8px */
+        gap: var(--space-4); /* 8px */
+    }
+    
+    /* Contact info grid: 2 columns */
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6); /* Slightly reduced gap */
+    }
+    
+}
+
+/* ============================================================================
+   13. RESPONSIVE DESIGN – MOBILE (768px)
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    
+    /* Contact CTA section */
+    .contact-cta {
+        /* Reduced padding: 80px tablet → 40px mobile */
+        padding: var(--space-10) var(--space-4);
+    }
+    
+    /* Contact CTA headline */
+    .contact-cta-headline {
+        /* Smaller headline: 28px → 24px */
+        font-size: var(--font-size-2xl); /* 24px */
+    }
+    
+    /* Contact CTA intro text */
+    .contact-cta-intro {
+        /* Smaller intro: 16px → 14px */
+        font-size: var(--font-size-sm); /* 14px */
+    }
+    
+    /* CTA buttons */
+    .contact-cta-buttons {
+        /* Stack buttons vertically on mobile */
+        flex-direction: column;
+        gap: var(--space-3); /* 6px */
+    }
+    
+    /* CTA button styling for mobile (full width) */
+    .contact-cta-buttons .btn {
+        /* Full width on mobile */
+        width: 100%;
+    }
+    
+    /* Contact info grid: 1 column */
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6); /* 12px */
+        margin-top: var(--space-4); /* Reduced margin */
+    }
+    
+}
+
+/* ============================================================================
+   14. RESPONSIVE DESIGN – SMALL MOBILE (480px)
+   ============================================================================ */
+
+@media (max-width: 479px) {
+    
+    /* Contact CTA section */
+    .contact-cta {
+        /* Minimal padding: 40px mobile → 24px small mobile */
+        padding: var(--space-6) var(--space-4);
+    }
+    
+    /* Contact CTA headline */
+    .contact-cta-headline {
+        /* Very small headline: 24px → 20px */
+        font-size: var(--font-size-xl); /* 20px */
+    }
+    
+    /* Contact CTA label */
+    .contact-cta-label {
+        /* Smaller label: 14px → 12px */
+        font-size: var(--font-size-xs); /* 12px */
+    }
+    
+    /* Contact CTA intro text */
+    .contact-cta-intro {
+        /* Smaller intro: 14px → 13px */
+        font-size: var(--font-size-sm); /* 13px */
+    }
+    
+    /* Contact info title */
+    .contact-info-title {
+        /* Smaller title: 16px → 15px */
+        font-size: var(--font-size-base); /* 15px */
+    }
+    
+    /* Contact info value */
+    .contact-info-value {
+        /* Smaller value: 16px → 14px */
+        font-size: var(--font-size-sm); /* 14px */
+    }
+    
+    /* Contact info note */
+    .contact-info-note {
+        /* Smaller note: 14px → 12px */
+        font-size: var(--font-size-xs); /* 12px */
+    }
+    
+}
+
+/* ============================================================================
+   15. ACCESSIBILITY – REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    
+    .contact-info-value a {
+        /* Disable transitions for users preferring reduced motion */
+        transition: none;
+    }
+    
+}
+
+/* ============================================================================
+   16. ACCESSIBILITY – HIGH CONTRAST MODE
+   ============================================================================ */
+
+@media (prefers-contrast: more) {
+    
+    .contact-info-card {
+        /* Add subtle border in high contrast mode */
+        border: 1px solid var(--color-primary);
+        border-radius: var(--radius-md);
+        padding: var(--space-6);
+    }
+    
+}
+
+/* ============================================================================
+   17. DARK MODE SUPPORT (Future)
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+    
+    .contact-cta {
+        /* Dark background (future implementation) */
+        background-color: var(--color-primary);
+        color: white;
+    }
+    
+    .contact-cta-label {
+        /* Light accent in dark mode */
+        color: var(--color-secondary);
+    }
+    
+    .contact-cta-headline {
+        /* Light text in dark mode */
+        color: white;
+    }
+    
+    .contact-cta-intro {
+        /* Light secondary text */
+        color: var(--color-neutral-300);
+    }
+    
+}
+}
+
+.contact-methods-list {
+    /* Methods list styling */
+}
+
+.contact-methods-list li {
+    /* Individual method item styling */
+}
+
+.contact-methods-list a {
+    /* Method link styling */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-preview-container {
+        /* Mobile adjustments */
+    }
+    
+    .contact-preview-content {
+        /* Mobile single-column layout */
+    }
+    
+    .contact-preview-info {
+        /* Mobile info styling */
+    }
+    
+    .contact-preview-form {
+        /* Mobile form styling */
+    }
+    
+    .contact-methods-list {
+        /* Mobile methods layout */
+    }
+}

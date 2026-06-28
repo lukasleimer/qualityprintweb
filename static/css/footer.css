@@ -1,60 +1,533 @@
-/* Footer Styles */
+/* ============================================================================
+   FOOTER SECTION
+   ============================================================================
+   
+   Premium footer completing the homepage journey. Maintains design system
+   consistency with unified spacing, typography, and responsive behavior.
+   
+   Architecture: Grid-based layout with 4 columns (desktop) → 2 (tablet) → 1 (mobile)
+   Colors: Slate-900 background (premium dark) with Slate-50 text
+   Components: Reuses typography, spacing, and color system throughout
+   
+   Design System: docs/DesignSystem.md
+   Sprint Documentation: docs/Sprint-11-Footer.md
+   
+============================================================================ */
+
+/* ============================================================================
+   1. FOOTER CONTAINER & LAYOUT
+   ============================================================================
+   
+   Main footer wrapper with dark premium background and generous padding.
+   Maintains visual consistency with other sections.
+   
+============================================================================ */
+
 .footer {
-    background-color: var(--primary-color);
-    color: var(--light-text);
-    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    background-color: var(--color-primary); /* Slate-900 */
+    color: var(--slate-50);
+    padding: var(--space-30) 0; /* 120px vertical padding (consistent with emphasis sections) */
+    margin-top: var(--space-30); /* Visual separation from main content */
 }
 
-.footer-content {
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20); /* 40px gap between main content and bottom */
+}
+
+/* ============================================================================
+   2. FOOTER MAIN CONTENT (4 COLUMNS)
+   ============================================================================
+   
+   Grid layout with company info, links, services, and contact.
+   Uses auto-fit responsive pattern for seamless scaling.
+   
+============================================================================ */
+
+.footer-main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Company column wider for logo + description */
+    gap: var(--space-12); /* 24px gap between columns */
 }
 
-.footer-section h3 {
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-md);
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6); /* 12px gap between elements within column */
 }
 
-.footer-section p {
-    color: #ecf0f1;
-    margin-bottom: var(--spacing-sm);
+/* ============================================================================
+   3. COMPANY COLUMN (LOGO, DESCRIPTION, SOCIAL)
+   ============================================================================
+   
+   First column: Logo placeholder, company description, and social media links.
+   Sets premium tone for entire footer.
+   
+============================================================================ */
+
+.footer-company {
+    gap: var(--space-8); /* 16px vertical spacing */
 }
 
-.footer-section ul {
-    list-style: none;
+.footer-logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--space-12); /* 48px height for logo area */
+    margin-bottom: var(--space-2); /* Small breathing room */
 }
 
-.footer-section ul li {
-    margin-bottom: var(--spacing-sm);
+.footer-logo-icon {
+    width: var(--space-12); /* 48px */
+    height: var(--space-12); /* 48px */
+    color: var(--color-secondary); /* Amber-600 accent */
+    opacity: 0.9;
+    transition: opacity var(--duration-base);
 }
 
-.footer-section a {
-    color: #ecf0f1;
-    text-decoration: none;
-    transition: var(--transition);
+.footer-company-name {
+    font-size: var(--text-lg); /* 18px */
+    font-weight: 700; /* Bold */
+    color: var(--slate-50);
+    margin: 0;
+    letter-spacing: -0.5px;
 }
 
-.footer-section a:hover {
-    color: var(--secondary-color);
-    text-decoration: none;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #bdc3c7;
-}
-
-.footer-bottom p {
+.footer-company-description {
+    font-size: var(--text-sm); /* 14px */
+    line-height: 1.6;
+    color: var(--slate-200);
     margin: 0;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .footer-content {
+/* ============================================================================
+   4. SOCIAL MEDIA LINKS
+   ============================================================================
+   
+   Icon-based social media links with consistent styling.
+   Minimal design to maintain premium aesthetic.
+   
+============================================================================ */
+
+.footer-social {
+    display: flex;
+    gap: var(--space-4); /* 8px gap between icons */
+    margin-top: var(--space-4); /* 8px top margin for spacing */
+}
+
+.footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-8); /* 32px */
+    height: var(--space-8); /* 32px */
+    border-radius: var(--rounded-md); /* 6px rounded */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle dark overlay */
+    color: var(--color-secondary); /* Amber-600 */
+    transition: all var(--duration-base);
+    text-decoration: none;
+}
+
+.footer-social-link:hover {
+    background-color: var(--color-secondary); /* Amber-600 background */
+    color: var(--color-primary); /* Slate-900 icon */
+    transform: translateY(-2px); /* Subtle lift */
+}
+
+.footer-social-link:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+.footer-social-icon {
+    width: var(--space-5); /* 20px */
+    height: var(--space-5); /* 20px */
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================================================
+   5. FOOTER COLUMN STYLING (Links, Services, Contact)
+   ============================================================================
+   
+   Consistent styling for all secondary columns (Quick Links, Services, Contact).
+   Uses unified typography and link styling.
+   
+============================================================================ */
+
+.footer-column-title {
+    font-size: var(--text-base); /* 16px */
+    font-weight: 600; /* Semibold */
+    color: var(--slate-50);
+    margin: 0 0 var(--space-4) 0; /* 8px bottom margin */
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* ============================================================================
+   6. FOOTER NAVIGATION (Links, Services)
+   ============================================================================
+   
+   Vertical list navigation with consistent link styling and hover states.
+   
+============================================================================ */
+
+.footer-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3); /* 6px gap between list items */
+}
+
+.footer-nav-list a {
+    font-size: var(--text-sm); /* 14px */
+    color: var(--slate-200);
+    text-decoration: none;
+    transition: all var(--duration-base);
+    display: inline-block;
+}
+
+.footer-nav-list a:hover {
+    color: var(--color-secondary); /* Amber-600 on hover */
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.footer-nav-list a:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ============================================================================
+   7. CONTACT COLUMN (Address Information)
+   ============================================================================
+   
+   Contact information with semantic HTML address element.
+   Uses flexbox for proper spacing of contact items.
+   
+============================================================================ */
+
+.footer-contact-info {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4); /* 8px between contact items */
+}
+
+.footer-contact-item {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2); /* 4px between strong and link */
+}
+
+.footer-contact-item strong {
+    font-size: var(--text-xs); /* 12px */
+    font-weight: 600;
+    color: var(--color-secondary); /* Amber-600 for field labels */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-contact-item a {
+    font-size: var(--text-sm); /* 14px */
+    color: var(--slate-200);
+    text-decoration: none;
+    transition: all var(--duration-base);
+}
+
+.footer-contact-item a:hover {
+    color: var(--color-secondary); /* Amber-600 */
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.footer-contact-item a:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ============================================================================
+   8. FOOTER BOTTOM (Legal & Copyright)
+   ============================================================================
+   
+   Bottom section with legal links and copyright notice.
+   Uses border-top for visual separation.
+   
+============================================================================ */
+
+.footer-bottom {
+    padding-top: var(--space-8); /* 16px top padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+}
+
+.footer-bottom-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6); /* 12px between elements */
+    align-items: center;
+    text-align: center;
+}
+
+.footer-legal {
+    display: flex;
+    gap: var(--space-6); /* 12px between legal links */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-legal-link {
+    font-size: var(--text-sm); /* 14px */
+    color: var(--slate-200);
+    text-decoration: none;
+    transition: all var(--duration-base);
+    position: relative;
+}
+
+.footer-legal-link:hover {
+    color: var(--color-secondary); /* Amber-600 */
+}
+
+.footer-legal-link:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.footer-copyright {
+    font-size: var(--text-sm); /* 14px */
+    color: var(--slate-400);
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+.footer-year {
+    font-feature-settings: "tnum"; /* Tabular numbers for year */
+}
+
+/* ============================================================================
+   9. REDUCED MOTION (Accessibility)
+   ============================================================================
+   
+   Remove transitions for users who prefer reduced motion.
+   
+============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-social-link,
+    .footer-nav-list a,
+    .footer-contact-item a,
+    .footer-legal-link {
+        transition: none;
+    }
+
+    .footer-social-link:hover {
+        transform: none;
+    }
+}
+
+/* ============================================================================
+   10. HIGH CONTRAST MODE (Accessibility)
+   ============================================================================
+   
+   Enhanced borders and colors for users with high contrast preferences.
+   
+============================================================================ */
+
+@media (prefers-contrast: more) {
+    .footer-bottom {
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .footer-social-link {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ============================================================================
+   11. RESPONSIVE: TABLET (768px - 1023px)
+   ============================================================================
+   
+   Adjust footer layout for medium-sized screens.
+   - Reduce column count from 4 to 2
+   - Adjust padding and gaps
+   - Maintain readability
+   
+============================================================================ */
+
+@media (max-width: 1023px) {
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-10); /* 20px gap */
+    }
+
+    .footer-company {
+        grid-column: 1 / -1; /* Span full width */
+    }
+
+    .footer {
+        padding: var(--space-20) 0; /* 80px vertical padding */
+    }
+}
+
+/* ============================================================================
+   12. RESPONSIVE: MOBILE (<768px)
+   ============================================================================
+   
+   Stack all footer sections vertically on mobile.
+   - Single column layout
+   - Adjusted spacing for mobile
+   - Centered text where appropriate
+   - Reduced font sizes for small screens
+   
+============================================================================ */
+
+@media (max-width: 767px) {
+    .footer-main {
         grid-template-columns: 1fr;
+        gap: var(--space-8); /* 16px gap between rows */
+    }
+
+    .footer-company {
+        padding-bottom: var(--space-4); /* 8px extra padding */
+    }
+
+    .footer-social {
+        justify-content: flex-start;
+    }
+
+    .footer-column-title {
+        font-size: var(--text-sm); /* 14px on mobile */
+        margin-bottom: var(--space-3); /* 6px */
+    }
+
+    .footer-nav-list a {
+        font-size: var(--text-xs); /* 12px on mobile */
+    }
+
+    .footer-contact-item {
+        gap: var(--space-2);
+    }
+
+    .footer-contact-item strong {
+        font-size: var(--text-xs); /* 12px */
+    }
+
+    .footer-contact-item a {
+        font-size: var(--text-xs); /* 12px */
+    }
+
+    .footer-bottom-content {
+        gap: var(--space-4); /* 8px */
+    }
+
+    .footer-legal {
+        gap: var(--space-4); /* 8px between legal links */
+    }
+
+    .footer-legal-link {
+        font-size: var(--text-xs); /* 12px */
+    }
+
+    .footer-copyright {
+        font-size: var(--text-xs); /* 12px */
+    }
+
+    .footer {
+        padding: var(--space-16) 0; /* 64px vertical padding */
+        margin-top: var(--space-20); /* 80px top margin on mobile */
+    }
+}
+
+/* ============================================================================
+   13. RESPONSIVE: SMALL MOBILE (<480px)
+   ============================================================================
+   
+   Further optimize for very small screens.
+   - Reduced padding
+   - Tighter spacing
+   - Mobile-optimized link sizes
+   
+============================================================================ */
+
+@media (max-width: 479px) {
+    .footer {
+        padding: var(--space-12) 0; /* 48px vertical padding */
+        margin-top: var(--space-16); /* 64px top margin */
+    }
+
+    .footer-main {
+        gap: var(--space-6); /* 12px gap between sections */
+    }
+
+    .footer-company-name {
+        font-size: var(--text-base); /* 16px */
+    }
+
+    .footer-company-description {
+        font-size: var(--text-xs); /* 12px */
+        line-height: 1.5;
+    }
+
+    .footer-social-link {
+        width: var(--space-7); /* 28px */
+        height: var(--space-7); /* 28px */
+    }
+
+    .footer-social-icon {
+        width: var(--space-4); /* 16px */
+        height: var(--space-4); /* 16px */
+    }
+
+    .footer-column-title {
+        font-size: var(--text-xs); /* 12px */
+        margin-bottom: var(--space-2); /* 4px */
+    }
+
+    .footer-nav-list {
+        gap: var(--space-2); /* 4px between items */
+    }
+
+    .footer-nav-list a {
+        font-size: var(--text-xs); /* 12px */
+    }
+
+    .footer-contact-item strong {
+        font-size: 10px;
+        letter-spacing: 0.3px;
+    }
+
+    .footer-contact-item a {
+        font-size: var(--text-xs); /* 12px */
+    }
+
+    .footer-bottom {
+        padding-top: var(--space-6); /* 12px */
+    }
+
+    .footer-legal {
+        gap: var(--space-3); /* 6px */
+    }
+
+    .footer-legal-link,
+    .footer-copyright {
+        font-size: 10px;
     }
 }

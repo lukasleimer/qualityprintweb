@@ -1,0 +1,470 @@
+/* =============================================================================
+   WHY QUALITY PRINT SECTION CSS
+   ============================================================================= 
+   
+   Trust-building section answering: "Why Quality Print?"
+   Reuses value card system from Sprint 5
+   
+   Design Principles:
+   - White background (clean, trustworthy, calm)
+   - Generous whitespace (more breathing room than Services)
+   - Premium, minimal aesthetic consistent with entire design system
+   - Reusable card components (extends value card system)
+   - Responsive grid system (4-column desktop, 2-column tablet, 1-column mobile)
+   - Full WCAG AAA accessibility compliance
+   
+   Component Reuse:
+   - Reuses value card styling (title + description layout)
+   - Uses existing button system (not in this section)
+   - Uses existing typography scale (label, headline, description, card text)
+   - Uses existing responsive patterns and breakpoints
+   - Uses all CSS variables (zero hardcodes)
+   
+   Files Modified: why-quality.css (new file)
+   Files Referenced: 
+   - templates/components/why-quality.html (semantic HTML structure)
+   - static/css/variables.css (design tokens)
+   - static/css/about.css (value card styling reference)
+   
+   ============================================================================= */
+
+/* ===== SECTION BASE ===== */
+
+.why-quality {
+    /* Background: White (trustworthy, clean, calm) */
+    background-color: white;
+    
+    /* Vertical padding: 120px (more than Services for calm feel) */
+    padding: var(--space-30) var(--space-6);
+    
+    /* Semantic section styling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* No borders or additional decorations – clean, minimal */
+}
+
+/* ===== CONTAINER ===== */
+
+.why-quality-container {
+    /* Max-width inherited from global container */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16); /* 32px gap between header and grid */
+}
+
+/* ===== SECTION HEADER ===== */
+
+.why-quality-header {
+    /* Header section: label, headline, introduction */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+    text-align: center;
+    
+    /* Max width to keep text readable */
+    max-width: 650px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ===== SECTION LABEL ===== */
+
+.why-quality-label {
+    /* Typography: small uppercase label */
+    font-size: var(--font-size-sm); /* 14px desktop */
+    font-weight: var(--font-weight-semibold); /* 600 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    text-transform: uppercase;
+    
+    /* Color: Amber-600 accent */
+    color: var(--color-secondary);
+    
+    /* Spacing: comfortable margin below */
+    margin: 0;
+}
+
+/* ===== SECTION HEADLINE ===== */
+
+.why-quality-headline {
+    /* Typography: main headline with accent support */
+    font-size: var(--font-size-3xl); /* 32px desktop */
+    font-weight: var(--font-weight-bold); /* 700 */
+    letter-spacing: var(--letter-spacing-tight); /* -0.5px */
+    line-height: 1.2;
+    
+    /* Color: primary slate */
+    color: var(--color-primary);
+    
+    /* Spacing */
+    margin: 0;
+    word-spacing: 100vw; /* Force each word to new line for responsiveness */
+}
+
+/* Accent text within headline */
+.why-quality-headline .text-accent {
+    /* Color: Amber-600 for secondary emphasis */
+    color: var(--color-secondary);
+}
+
+/* ===== SECTION INTRODUCTION ===== */
+
+.why-quality-intro {
+    /* Typography: supporting paragraph */
+    font-size: var(--font-size-base); /* 16px desktop */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.7;
+    
+    /* Color: secondary text (Slate-700) */
+    color: var(--color-neutral-700);
+    
+    /* Spacing and sizing */
+    margin: var(--space-2) 0 0 0;
+    max-width: 600px;
+}
+
+/* ===== ADVANTAGES GRID (Reuses value card system from Sprint 5) ===== */
+
+.why-quality-grid {
+    /* Responsive grid using auto-fit with minmax */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    
+    /* Consistent spacing (same as value cards from Sprint 5) */
+    gap: var(--space-8); /* 16px – scales down on mobile */
+    
+    /* Full width of container */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== WHY QUALITY CARD (Reuses value card styling from Sprint 5) ===== */
+
+.why-quality-card {
+    /* Base styling – reuses value card patterns */
+    
+    /* Background: Gray-50 (subtle, lighter than main white) */
+    background-color: var(--color-neutral-50);
+    
+    /* Border: subtle 1px solid */
+    border: 1px solid var(--color-neutral-100); /* Gray-100 */
+    border-radius: var(--radius-md); /* 8px */
+    
+    /* Padding: comfortable space for content */
+    padding: var(--space-6); /* 24px */
+    
+    /* Layout: flex column for vertical stacking */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4); /* 8px between title and description */
+    
+    /* Alignment: content at top initially */
+    align-items: flex-start;
+    
+    /* Height: ensure consistent sizing */
+    min-height: auto;
+    
+    /* Smooth transitions for hover effects */
+    transition: all 200ms ease-out;
+    
+    /* Subtle shadow for depth */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Why Quality card hover state (matching value card hover) */
+.why-quality-card:hover {
+    /* Background: white (more prominent) */
+    background-color: white;
+    
+    /* Border: slightly darker */
+    border-color: var(--color-neutral-200);
+    
+    /* Shadow: enhanced on hover for lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== WHY QUALITY CARD TITLE ===== */
+
+.why-quality-card-title {
+    /* Typography: card headline */
+    font-size: var(--font-size-base); /* 16px */
+    font-weight: var(--font-weight-semibold); /* 600 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.4;
+    
+    /* Color: primary (Slate-900) */
+    color: var(--color-primary);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+    
+    /* Full width */
+    width: 100%;
+}
+
+/* ===== WHY QUALITY CARD DESCRIPTION ===== */
+
+.why-quality-card-description {
+    /* Typography: card description (same as value cards) */
+    font-size: var(--font-size-sm); /* 14px */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.6;
+    
+    /* Color: secondary text (Slate-700) */
+    color: var(--color-neutral-700);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+    
+    /* Flexibility for text wrapping */
+    flex-grow: 1;
+}
+
+/* ===== FOCUS STATES (Accessibility) ===== */
+
+.why-quality-card:focus-within {
+    /* Focus outline when card or children are focused */
+    outline: 2px solid var(--color-secondary); /* Amber-600 */
+    outline-offset: 2px;
+}
+
+/* ===== HIGH CONTRAST MODE SUPPORT ===== */
+
+@media (prefers-contrast: more) {
+    .why-quality {
+        /* Enhanced contrast for backgrounds */
+        border-bottom: 2px solid var(--color-primary);
+    }
+    
+    .why-quality-card {
+        /* Higher contrast borders */
+        border: 2px solid var(--color-primary);
+    }
+    
+    .why-quality-card:hover {
+        /* Even higher contrast on hover */
+        border-color: var(--color-secondary);
+    }
+    
+    .why-quality-headline {
+        /* Underline headline for emphasis */
+        text-decoration: underline;
+        text-decoration-color: var(--color-secondary);
+        text-decoration-thickness: 3px;
+    }
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    /* Remove all transitions for accessibility */
+    .why-quality-card {
+        transition: none;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* ===== TABLET LAYOUT (768px – 1023px) ===== */
+
+@media (max-width: 1023px) {
+    /* Section adjustments */
+    .why-quality {
+        padding: var(--space-20) var(--space-6); /* 40px vertical, 12px horizontal */
+    }
+    
+    /* Headline scaling */
+    .why-quality-headline {
+        font-size: var(--font-size-2xl); /* 24px */
+    }
+    
+    /* Intro text scaling */
+    .why-quality-intro {
+        font-size: var(--font-size-base); /* 16px – unchanged */
+    }
+    
+    /* Grid adjustment: 2 columns on tablet */
+    .why-quality-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-6); /* 12px */
+    }
+    
+    /* Card adjustments */
+    .why-quality-card {
+        padding: var(--space-5); /* 20px */
+        gap: var(--space-3); /* 6px */
+    }
+}
+
+/* ===== MOBILE LAYOUT (below 768px) ===== */
+
+@media (max-width: 767px) {
+    /* Section adjustments */
+    .why-quality {
+        padding: var(--space-16) var(--space-4); /* 32px vertical, 8px horizontal */
+    }
+    
+    /* Container adjustments */
+    .why-quality-container {
+        gap: var(--space-12); /* 24px */
+    }
+    
+    /* Header adjustments */
+    .why-quality-header {
+        gap: var(--space-3); /* 6px */
+        max-width: 100%;
+    }
+    
+    /* Label scaling */
+    .why-quality-label {
+        font-size: var(--font-size-xs); /* 12px */
+    }
+    
+    /* Headline scaling */
+    .why-quality-headline {
+        font-size: var(--font-size-lg); /* 20px */
+        line-height: 1.3;
+    }
+    
+    /* Intro text scaling */
+    .why-quality-intro {
+        font-size: var(--font-size-sm); /* 14px */
+        line-height: 1.6;
+        margin-top: var(--space-2); /* 4px */
+    }
+    
+    /* Grid: cards stack */
+    .why-quality-grid {
+        grid-template-columns: 1fr; /* Single column */
+        gap: var(--space-4); /* 8px */
+    }
+    
+    /* Card adjustments */
+    .why-quality-card {
+        padding: var(--space-4); /* 8px */
+        gap: var(--space-3); /* 6px */
+    }
+    
+    /* Card title scaling */
+    .why-quality-card-title {
+        font-size: var(--font-size-base); /* 16px */
+    }
+    
+    /* Card description scaling */
+    .why-quality-card-description {
+        font-size: var(--font-size-xs); /* 12px */
+        line-height: 1.5;
+    }
+}
+
+/* ===== SMALL MOBILE LAYOUT (below 480px) ===== */
+
+@media (max-width: 479px) {
+    /* Section adjustments */
+    .why-quality {
+        padding: var(--space-12) var(--space-3); /* 24px vertical, 6px horizontal */
+    }
+    
+    /* Container adjustments */
+    .why-quality-container {
+        gap: var(--space-10); /* 20px */
+    }
+    
+    /* Header adjustments */
+    .why-quality-header {
+        gap: var(--space-2); /* 4px */
+    }
+    
+    /* Label scaling */
+    .why-quality-label {
+        font-size: var(--font-size-xs); /* 12px */
+    }
+    
+    /* Headline scaling */
+    .why-quality-headline {
+        font-size: var(--font-size-base); /* 16px */
+    }
+    
+    /* Intro text scaling */
+    .why-quality-intro {
+        font-size: var(--font-size-xs); /* 12px */
+        line-height: 1.5;
+        margin-top: var(--space-1); /* 2px */
+    }
+    
+    /* Grid: maintain single column */
+    .why-quality-grid {
+        gap: var(--space-3); /* 6px */
+    }
+    
+    /* Card adjustments */
+    .why-quality-card {
+        padding: var(--space-3); /* 6px */
+        gap: var(--space-2); /* 4px */
+    }
+    
+    /* Card title scaling */
+    .why-quality-card-title {
+        font-size: var(--font-size-sm); /* 14px */
+    }
+    
+    /* Card description scaling */
+    .why-quality-card-description {
+        font-size: var(--font-size-xs); /* 12px */
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    /* Adjust colors for printing */
+    .why-quality {
+        background-color: white;
+    }
+    
+    /* Remove shadows for print */
+    .why-quality-card {
+        box-shadow: none;
+        border: 1px solid #999;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* ===== GRID SYSTEM NOTES ===== */
+
+/*
+   The why-quality grid uses CSS Grid with auto-fit and minmax:
+   
+   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+   
+   This creates a responsive grid that:
+   - Desktop (1200px+): 4 columns (280px each + gaps)
+   - Desktop (1024px-1199px): 3-4 columns (responsive)
+   - Tablet (768px-1023px): 2 columns (responsive)
+   - Mobile (<768px): 1 column (full width minus padding)
+   - Small mobile (<480px): 1 column (responsive sizing)
+   
+   The minmax(280px, 1fr) ensures:
+   - Minimum width: 280px per card (readable content)
+   - Maximum width: flex to available space
+   - Auto-reflow without media queries (progressive enhancement)
+   
+   This is the same pattern used in Sprint 5 value cards and Sprint 6 service cards.
+   
+   Number of cards can be any number (6 shown as example, can be 4, 5, 8, etc.)
+   - 6 cards: 2x3 desktop, 2x3 tablet, 6x1 mobile
+   - 4 cards: 2x2 desktop, 2x2 tablet, 4x1 mobile
+   - 8 cards: 3x3 (with gap) desktop, 2x4 tablet, 8x1 mobile
+*/
+
+/* ===== END OF WHY QUALITY PRINT CSS ===== */

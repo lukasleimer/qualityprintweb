@@ -1,0 +1,469 @@
+/* ============================================================================
+   BUTTON SYSTEM
+   ============================================================================
+   
+   Premium button styles defining visual hierarchy.
+   This is the foundational button system for the entire website.
+   
+   Design Principles:
+   - Elegant and subtle hover effects
+   - Consistent spacing and sizing
+   - Clear visual hierarchy
+   - Accessibility first (focus states)
+   
+   Variants:
+   - Primary: Main call-to-action buttons
+   - Secondary: Alternative actions
+   - Outline: Ghost/secondary actions
+   - Disabled: Disabled state
+   
+   Sizes:
+   - xs: Extra small (24px height)
+   - sm: Small (32px height) - Navigation buttons
+   - base: Standard (40px height) - Primary buttons
+   - lg: Large (48px height) - Hero CTAs
+   
+============================================================================ */
+
+/* ============================================================================
+   BASE BUTTON STYLES
+   ============================================================================ */
+
+.btn {
+    /* Display & Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    
+    /* Typography */
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-normal);
+    line-height: 1.2;
+    
+    /* Appearance */
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    white-space: nowrap;
+    
+    /* Spacing */
+    padding: var(--space-3) var(--space-6);
+    
+    /* Transitions */
+    transition: all var(--duration-base) var(--ease-out);
+    
+    /* Focus States */
+    outline: none;
+    
+    /* Remove default button styles */
+    appearance: none;
+    background: none;
+}
+
+/* ============================================================================
+   PRIMARY BUTTON (Main CTA)
+   ============================================================================
+   
+   Used for primary actions and calls-to-action.
+   Premium, high-contrast appearance.
+   
+============================================================================ */
+
+.btn-primary {
+    /* Colors */
+    background-color: var(--color-secondary);        /* Amber-600 */
+    color: var(--color-text-light);                  /* White text */
+    border: 2px solid var(--color-secondary);
+    
+    /* Shadow for depth */
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15);
+}
+
+.btn-primary:hover {
+    /* Subtle hover effect */
+    background-color: var(--color-secondary-light);  /* Amber-500 */
+    border-color: var(--color-secondary-light);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    /* Press effect */
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(217, 119, 6, 0.15);
+}
+
+.btn-primary:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+}
+
+.btn-primary:disabled {
+    /* Disabled state */
+    background-color: var(--color-border);
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ============================================================================
+   SECONDARY BUTTON (Alternative Action)
+   ============================================================================
+   
+   Used for secondary or alternative actions.
+   Less prominence than primary button.
+   
+============================================================================ */
+
+.btn-secondary {
+    /* Colors */
+    background-color: var(--color-bg-secondary);     /* Slate-50 */
+    color: var(--color-text-primary);                /* Slate-900 */
+    border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    /* Subtle hover */
+    background-color: var(--color-bg-tertiary);      /* Slate-100 */
+    border-color: var(--color-border-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary:active {
+    /* Press effect */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary:disabled {
+    /* Disabled state */
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ============================================================================
+   OUTLINE BUTTON (Ghost/Tertiary)
+   ============================================================================
+   
+   Used for tertiary actions or minimal emphasis.
+   Transparent background with border.
+   
+============================================================================ */
+
+.btn-outline {
+    /* Colors */
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-text-primary);
+}
+
+.btn-outline:hover {
+    /* Subtle hover */
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-text-secondary);
+    color: var(--color-text-secondary);
+}
+
+.btn-outline:active {
+    /* Press effect */
+    background-color: var(--color-bg-tertiary);
+}
+
+.btn-outline:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+.btn-outline:disabled {
+    /* Disabled state */
+    color: var(--color-text-muted);
+    border-color: var(--color-border);
+    cursor: not-allowed;
+}
+
+/* ============================================================================
+   TEXT BUTTON (Link Style)
+   ============================================================================
+   
+   Button styled like a text link.
+   Minimal emphasis.
+   
+============================================================================ */
+
+.btn-text {
+    /* Colors */
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    
+    /* Underline on hover */
+    text-decoration: none;
+}
+
+.btn-text:hover {
+    /* Subtle underline */
+    color: var(--color-secondary-light);
+    text-decoration: underline;
+    transform: none;
+}
+
+.btn-text:active {
+    /* Minimal feedback */
+    opacity: 0.8;
+}
+
+.btn-text:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+    padding: var(--space-1);
+}
+
+/* ============================================================================
+   BUTTON SIZES
+   ============================================================================
+   
+   Consistent sizing for different contexts.
+   Height always includes padding.
+   
+============================================================================ */
+
+/* Extra Small (24px height) - Used for compact areas */
+.btn-xs {
+    height: var(--btn-xs-height);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Small (32px height) - Used in navigation */
+.btn-sm {
+    height: var(--btn-sm-height);
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Base/Standard (40px height) - Default size */
+.btn,
+.btn-base {
+    height: var(--btn-base-height);
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-base);
+}
+
+/* Large (48px height) - For hero and prominent areas */
+.btn-lg {
+    height: var(--btn-lg-height);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Extra Large (56px height) - For hero prominently */
+.btn-xl {
+    height: var(--btn-xl-height);
+    padding: var(--space-4) var(--space-12);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ============================================================================
+   BUTTON WIDTH MODIFIERS
+   ============================================================================ */
+
+/* Full width button */
+.btn-block {
+    width: 100%;
+    display: flex;
+}
+
+/* Icon-only button */
+.btn-icon {
+    width: var(--btn-base-height);
+    height: var(--btn-base-height);
+    padding: 0;
+    border-radius: var(--radius-md);
+}
+
+.btn-icon-sm {
+    width: var(--btn-sm-height);
+    height: var(--btn-sm-height);
+}
+
+.btn-icon-lg {
+    width: var(--btn-lg-height);
+    height: var(--btn-lg-height);
+}
+
+/* ============================================================================
+   BUTTON STATE MODIFICATIONS
+   ============================================================================ */
+
+/* Loading state */
+.btn[aria-busy="true"],
+.btn.is-loading {
+    opacity: 0.7;
+    cursor: wait;
+    pointer-events: none;
+}
+
+/* Disabled state (global) */
+.btn:disabled,
+.btn[aria-disabled="true"],
+.btn.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Active/Current state */
+.btn.is-active,
+.btn[aria-current="page"] {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================================
+   BUTTON WITH ICONS
+   ============================================================================ */
+
+/* Icon inside button */
+.btn svg,
+.btn .icon {
+    width: 1.2em;
+    height: 1.2em;
+    flex-shrink: 0;
+}
+
+/* Icon before text */
+.btn .icon-left {
+    order: -1;
+}
+
+/* Icon after text */
+.btn .icon-right {
+    order: 1;
+}
+
+/* ============================================================================
+   BUTTON GROUPS
+   ============================================================================ */
+
+.btn-group {
+    display: inline-flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.btn-group-block {
+    display: flex;
+    gap: var(--space-2);
+    flex-direction: column;
+}
+
+.btn-group-justified {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.btn-group-justified .btn {
+    flex: 1;
+}
+
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
+
+/* Mobile: Reduce button sizes */
+@media (max-width: 767px) {
+    .btn {
+        /* Ensure 44px+ touch targets */
+        min-height: 44px;
+        font-size: var(--font-size-base);
+    }
+    
+    .btn-sm {
+        min-height: 40px;
+    }
+    
+    .btn-block,
+    .btn-block-mobile {
+        width: 100%;
+    }
+}
+
+/* Tablet: Optimize spacing */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .btn-lg {
+        padding: var(--space-3) var(--space-6);
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+/* Ensure visible focus for keyboard users */
+.btn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+    .btn-primary {
+        border-width: 3px;
+    }
+    
+    .btn:focus-visible {
+        outline-width: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none;
+    }
+    
+    .btn:hover {
+        transform: none;
+    }
+    
+    .btn:active {
+        transform: none;
+    }
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+    .btn {
+        border: 1px solid currentColor;
+        background: transparent;
+        color: #000;
+    }
+}

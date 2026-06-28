@@ -36,6 +36,18 @@
     --amber-800:  #92400e;
     --amber-900:  #78350f;
     
+    /* Tertiary Colors (Emerald) - Sustainability & Nature */
+    --emerald-50:   #f0fdf4;
+    --emerald-100:  #dcfce7;
+    --emerald-200:  #bbf7d0;
+    --emerald-300:  #6ee7b7;
+    --emerald-400:  #34d399;
+    --emerald-500:  #10b981;
+    --emerald-600:  #059669;
+    --emerald-700:  #047857;
+    --emerald-800:  #065f46;
+    --emerald-900:  #064e3b;
+    
     /* Semantic Colors */
     --green-500:  #10b981;    /* Success */
     --red-500:    #ef4444;    /* Error */
@@ -49,6 +61,8 @@
     --color-secondary:    var(--amber-600);
     --color-secondary-light: var(--amber-500);
     --color-accent:       var(--amber-600);
+    --color-tertiary:     var(--emerald-600);
+    --color-tertiary-light: var(--emerald-500);
     
     --color-success: var(--green-500);
     --color-error:   var(--red-500);
@@ -67,6 +81,8 @@
     --color-bg-secondary:   var(--slate-50);
     --color-bg-tertiary:    var(--slate-100);
     --color-bg-hover:       var(--slate-100);
+    --color-bg-accent:      var(--slate-50);        /* For accent sections */
+    --color-bg-accent-alt:  var(--emerald-50);      /* Alternative accent background */
     
     /* Border & Divider Colors */
     --color-border-light:   var(--slate-200);

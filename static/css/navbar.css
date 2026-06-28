@@ -1,90 +1,660 @@
-/* Navbar Styles */
+/* ============================================================================
+   NAVIGATION BAR – PREMIUM DESIGN SYSTEM
+   ============================================================================
+   
+   This navigation defines the visual foundation for the entire website.
+   
+   Design Principles:
+   - Premium, modern, minimalist
+   - Generous whitespace
+   - Elegant hover effects
+   - Seamless mobile experience
+   - Accessibility first
+   
+   Structure:
+   - Header with sticky positioning
+   - Logo section (left)
+   - Navigation menu (center)
+   - CTA button (right)
+   - Mobile overlay navigation
+   
+   Typography defined here becomes standard for entire site.
+   
+============================================================================ */
+
+/* ============================================================================
+   1. NAVBAR CONTAINER (Base Styles)
+   ============================================================================ */
+
 .navbar {
-    background-color: var(--primary-color);
-    color: var(--light-text);
-    padding: var(--spacing-md) 0;
+    /* Positioning */
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: var(--z-sticky);
+    
+    /* Background & Colors */
+    background-color: var(--color-primary);              /* Slate-900 */
+    color: var(--color-text-light);                      /* White */
+    
+    /* Spacing */
+    padding: 0;
+    margin: 0;
+    
+    /* Transitions */
+    transition: all var(--duration-base) var(--ease-out);
+    
+    /* Shadow - minimal until scroll */
+    box-shadow: none;
+    
+    /* Border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.navbar-content {
+/* Navbar with scroll shadow (via data attribute or JS class) */
+.navbar.is-scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ============================================================================
+   2. NAVBAR CONTAINER LAYOUT
+   ============================================================================ */
+
+.navbar-container {
+    /* Layout */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-8);
+    
+    /* Spacing */
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+    
+    /* Height - Premium feel via spacing */
+    min-height: 72px;
+    
+    /* Ensure content stays within container */
+    width: 100%;
 }
 
-.logo h1 {
-    margin: 0;
-    font-size: var(--font-size-2xl);
-}
+/* ============================================================================
+   3. LOGO SECTION (Left)
+   ============================================================================
+   
+   Premium logo area with generous whitespace.
+   Logo is primary visual identifier.
+   
+============================================================================ */
 
-.logo a {
-    color: var(--light-text);
-    text-decoration: none;
-}
-
-.logo a:hover {
-    color: var(--secondary-color);
-}
-
-/* Navigation Menu */
-.nav-menu {
+.navbar-logo {
+    /* Flex properties */
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    
+    /* Spacing */
+    gap: var(--space-2);
 }
 
-.nav-links {
+.logo-link {
+    /* Display */
     display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    
+    /* Remove link styling */
+    text-decoration: none;
+    color: inherit;
+    
+    /* Focus states */
+    border-radius: var(--radius-sm);
+    outline: none;
+    
+    /* Transition */
+    transition: color var(--duration-base) var(--ease-out);
+}
+
+.logo-link:hover {
+    /* Subtle color change */
+    color: var(--color-secondary-light);
+}
+
+.logo-link:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+}
+
+.logo-text {
+    /* Typography - Standard Site Font */
+    font-family: var(--font-sans);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    
+    /* Color */
+    color: var(--color-text-light);
+    
+    /* Prevent text selection wobble */
+    user-select: none;
+}
+
+/* ============================================================================
+   4. NAVIGATION MENU (Center)
+   ============================================================================
+   
+   Main navigation links with elegant hover effects.
+   Desktop: horizontal layout
+   Mobile: overlay navigation
+   
+============================================================================ */
+
+.navbar-nav {
+    /* Flex - center alignment */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: var(--space-12);
+    
+    /* Position relative for mobile overlay */
+    position: relative;
+}
+
+/* ============================================================================
+   5. NAVIGATION LINKS (Horizontal Menu)
+   ============================================================================ */
+
+.navbar-links {
+    /* List reset */
     list-style: none;
-    gap: var(--spacing-lg);
+    margin: 0;
+    padding: 0;
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    
+    /* Default: desktop only */
 }
 
-.nav-links a {
-    color: var(--light-text);
+.nav-item {
+    /* Reset */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    /* Typography - Site Standard */
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-normal);
+    line-height: 1.5;
+    
+    /* Colors */
+    color: var(--color-text-light);
     text-decoration: none;
-    transition: var(--transition);
-    font-weight: 500;
+    
+    /* Padding for touch targets */
+    padding: var(--space-2) var(--space-3);
+    margin: var(--space-1);
+    border-radius: var(--radius-sm);
+    
+    /* Transitions */
+    transition: all var(--duration-base) var(--ease-out);
+    
+    /* Focus */
+    outline: none;
+    
+    /* Position relative for underline effect */
+    position: relative;
+    display: inline-block;
 }
 
-.nav-links a:hover {
-    color: var(--secondary-color);
-    text-decoration: none;
+/* Elegant underline effect on hover */
+.nav-link::after {
+    /* Pseudo-element for underline */
+    content: '';
+    position: absolute;
+    bottom: var(--space-1);
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    border-radius: 1px;
+    
+    /* Animation */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-base) var(--ease-out);
 }
 
-.menu-toggle {
+.nav-link:hover::after {
+    /* Expand underline on hover */
+    transform: scaleX(1);
+}
+
+.nav-link:hover {
+    /* Subtle color transition */
+    color: var(--color-secondary-light);
+}
+
+.nav-link:active,
+.nav-link[data-active="true"] {
+    /* Active state - persistent underline */
+    color: var(--color-secondary);
+}
+
+.nav-link[data-active="true"]::after {
+    /* Active underline */
+    transform: scaleX(1);
+}
+
+.nav-link:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    background-color: rgba(217, 119, 6, 0.1);
+}
+
+/* ============================================================================
+   6. CTA BUTTON SECTION (Right)
+   ============================================================================
+   
+   Premium call-to-action button.
+   High contrast, immediately visible.
+   
+============================================================================ */
+
+.navbar-cta {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    
+    /* Spacing */
+    gap: var(--space-4);
+}
+
+.navbar-cta .btn {
+    /* Ensure proper sizing */
+    white-space: nowrap;
+}
+
+/* ============================================================================
+   7. MOBILE MENU TOGGLE
+   ============================================================================
+   
+   Hamburger button for mobile navigation.
+   Hidden on desktop, visible on mobile.
+   
+============================================================================ */
+
+.navbar-toggle {
+    /* Display - hidden by default */
     display: none;
+    
+    /* Reset button styles */
     background: none;
     border: none;
-    color: var(--light-text);
-    font-size: var(--font-size-2xl);
+    padding: var(--space-2);
+    margin: 0;
     cursor: pointer;
+    
+    /* Colors */
+    color: var(--color-text-light);
+    
+    /* Focus states */
+    border-radius: var(--radius-sm);
+    outline: none;
+    
+    /* Touch target */
+    min-width: 44px;
+    min-height: 44px;
+    
+    /* Flexbox center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Transition */
+    transition: all var(--duration-base) var(--ease-out);
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
+.navbar-toggle:hover {
+    /* Subtle hover effect */
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-secondary-light);
+}
+
+.navbar-toggle:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+.navbar-toggle[aria-expanded="true"] {
+    /* Active state */
+    background-color: rgba(217, 119, 6, 0.15);
+    color: var(--color-secondary-light);
+}
+
+/* Hamburger icon animation */
+.toggle-icon {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    
+    /* Dimensions */
+    width: 24px;
+    height: 24px;
+}
+
+.toggle-line {
+    /* Individual hamburger lines */
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 1px;
+    
+    /* Transition for animation */
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+/* Hamburger animation when active */
+.navbar-toggle[aria-expanded="true"] .toggle-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 8px);
+}
+
+.navbar-toggle[aria-expanded="true"] .toggle-line:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle[aria-expanded="true"] .toggle-line:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* ============================================================================
+   8. MOBILE NAVIGATION OVERLAY
+   ============================================================================
+   
+   Full-screen overlay navigation for mobile.
+   Slides in from top with smooth animation.
+   
+============================================================================ */
+
+.navbar-mobile {
+    /* Position */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: var(--z-dropdown);
+    
+    /* Background */
+    background: linear-gradient(135deg, 
+        var(--color-primary) 0%, 
+        rgba(15, 23, 42, 0.98) 100%);
+    
+    /* Border */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Spacing */
+    padding: 0;
+    margin: 0;
+    
+    /* Display - hidden by default */
+    display: none;
+    flex-direction: column;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    
+    /* Animation */
+    animation: slideDown var(--duration-base) var(--ease-out);
+}
+
+.navbar-mobile[aria-hidden="false"] {
+    /* Show when active */
+    display: flex;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================================
+   9. MOBILE NAVIGATION LINKS
+   ============================================================================ */
+
+.mobile-links {
+    /* List reset */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav-item {
+    /* Reset */
+    margin: 0;
+    padding: 0;
+    
+    /* Border for separation */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-link {
+    /* Typography */
+    font-family: var(--font-sans);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-normal);
+    
+    /* Colors */
+    color: var(--color-text-light);
+    text-decoration: none;
+    
+    /* Padding */
+    padding: var(--space-4) var(--space-6);
+    display: block;
+    
+    /* Transition */
+    transition: all var(--duration-base) var(--ease-out);
+    
+    /* Focus */
+    outline: none;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+    /* Hover effect */
+    background-color: rgba(217, 119, 6, 0.15);
+    color: var(--color-secondary-light);
+    padding-left: var(--space-8);
+}
+
+.mobile-nav-link:focus-visible {
+    /* Keyboard navigation */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: -2px;
+    background-color: rgba(217, 119, 6, 0.1);
+}
+
+/* Mobile nav divider */
+.mobile-nav-divider {
+    /* Spacing divider */
+    height: var(--space-2);
+    background-color: rgba(255, 255, 255, 0.04);
+    border: none;
+    margin: var(--space-2) 0;
+}
+
+/* Mobile CTA Button */
+.mobile-nav-cta {
+    /* Special styling for CTA in mobile menu */
+    margin: var(--space-4) var(--space-6) var(--space-6) var(--space-6);
+    font-size: var(--font-size-lg);
+}
+
+/* ============================================================================
+   10. RESPONSIVE DESIGN
+   ============================================================================ */
+
+/* Tablet and Desktop (768px+) */
+@media (min-width: 768px) {
+    .navbar-toggle {
+        display: none !important;
     }
     
-    .nav-links {
+    .navbar-mobile {
+        display: none !important;
+    }
+    
+    .navbar-links {
+        display: flex;
+    }
+}
+
+/* Mobile Only (below 768px) */
+@media (max-width: 767px) {
+    /* Reduce navbar height on mobile */
+    .navbar-container {
+        min-height: 56px;
+        padding-top: var(--space-2);
+        padding-bottom: var(--space-2);
+        gap: var(--space-4);
+    }
+    
+    .logo-text {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Hide desktop menu */
+    .navbar-links {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background-color: var(--primary-color);
-        padding: var(--spacing-lg);
-        gap: var(--spacing-md);
     }
     
-    .nav-links.active {
+    /* Show mobile toggle */
+    .navbar-toggle {
         display: flex;
     }
     
-    .navbar-content {
-        flex-wrap: wrap;
+    /* CTA button smaller on mobile */
+    .navbar-cta .btn-sm {
+        padding: var(--space-2) var(--space-4);
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Mobile menu takes full width */
+    .navbar-mobile {
+        left: 0;
+        right: 0;
     }
 }
+
+/* Small Mobile (below 480px) */
+@media (max-width: 479px) {
+    .navbar-container {
+        min-height: 56px;
+    }
+    
+    .logo-text {
+        font-size: var(--font-size-lg);
+    }
+    
+    .navbar-cta {
+        display: none;
+    }
+}
+
+/* ============================================================================
+   11. ACCESSIBILITY
+   ============================================================================ */
+
+/* Skip link (hidden by default) */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-secondary);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    text-decoration: none;
+    z-index: var(--z-modal);
+    border-radius: var(--radius-sm);
+}
+
+.skip-to-content:focus {
+    top: var(--space-2);
+    left: var(--space-2);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+    .navbar {
+        border-bottom-width: 2px;
+    }
+    
+    .nav-link {
+        text-decoration: underline;
+    }
+    
+    .navbar-toggle {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .navbar,
+    .navbar-toggle,
+    .toggle-line,
+    .nav-link,
+    .mobile-nav-link {
+        transition: none;
+    }
+    
+    .navbar-mobile {
+        animation: none;
+    }
+    
+    .navbar-toggle[aria-expanded="true"] .toggle-line:nth-child(1),
+    .navbar-toggle[aria-expanded="true"] .toggle-line:nth-child(3) {
+        transform: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar {
+        position: static;
+        box-shadow: none;
+    }
+    
+    .navbar-toggle,
+    .navbar-mobile {
+        display: none !important;
+    }
+}
+

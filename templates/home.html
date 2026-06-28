@@ -1,14 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Quality Print - Startseite{% endblock %}
+{% block title %}Quality Print - Professionelle Druckdienstleistungen{% endblock %}
 
 {% block content %}
-    <!-- Hero Section -->
-    {% include 'components/hero.html' %}
-    
-    <!-- Services Section -->
-    {% include 'components/services.html' %}
-    
-    <!-- CTA Section -->
-    {% include 'components/cta.html' %}
+    <main>
+        <!-- 1. Hero Section: First Impression & Main Value Proposition -->
+        {% include 'components/hero.html' %}
+        
+        <!-- 2. About Section: Company Introduction & Values -->
+        {% include 'components/about.html' %}
+        
+        <!-- 3. Services Section: Service Offerings & Categories -->
+        {% include 'components/services.html' %}
+        
+        <!-- 4. Quality Section: Quality Standards & Certifications -->
+        {% include 'components/quality.html' %}
+        
+        <!-- 5. References Section: Projects & Testimonials -->
+        {% include 'components/references.html' %}
+        
+        <!-- 6. Sustainability Section: Environmental Commitment -->
+        {% include 'components/sustainability.html' %}
+        
+        <!-- 7. Contact Preview Section: Quick Contact & Form Integration -->
+        {% include 'components/contact-preview.html' %}
+        
+        <!-- 8. CTA Section: Final Call to Action -->
+        {% include 'components/cta.html' %}
+    </main>
 {% endblock %}

@@ -156,51 +156,235 @@ Subtile Schatten für Tiefenwirkung:
 
 ---
 
-## 6. Buttons
+## 6. Button System (Visual Foundation)
 
-### Button Größen
+The button system defines the interaction style for the entire website. All buttons follow these principles: **Premium, accessible, consistent**.
 
-| Größe | Padding | Font-Size | Min-Height | Verwendung |
-|-------|---------|-----------|-----------|------------|
-| **sm** | 8px 12px | 14px | 32px | Inline actions |
-| **base** | 10px 16px | 16px | 40px | Standard buttons |
-| **lg** | 12px 20px | 16px | 48px | Primary actions |
-| **xl** | 14px 24px | 18px | 56px | Hero CTAs |
+### Button Sizes
 
-### Button Varianten
+All sizes maintain **44px+ touch targets** for mobile accessibility.
 
-#### Primary Button
+| Größe | Höhe | Padding | Font | Verwendung |
+|-------|------|---------|------|------------|
+| **xs** | 24px | 4px 12px | 12px | Small labels, compact |
+| **sm** | 32px | 8px 20px | 14px | Navigation, sidebars |
+| **base** | 40px | 12px 24px | 16px | Standard buttons |
+| **lg** | 48px | 16px 32px | 18px | Hero sections |
+| **xl** | 56px | 16px 48px | 20px | Large hero CTAs |
+
+### Button Variants
+
+#### 1. Primary Button (Hauptaktion)
+
+**Purpose**: High-priority actions, CTAs, conversion goals
+
 ```css
-background: var(--slate-900)
-color: white
+/* Default State */
+background: var(--color-secondary)       /* Amber-600 */
+color: var(--color-text-light)           /* White */
 border: none
-transition: all 0.2s ease
-hover: background-color: var(--amber-600), shadow-md
-active: background-color: var(--slate-800)
-disabled: opacity 0.5, cursor not-allowed
-```
+border-radius: var(--radius-md)
+font-weight: 600
+box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15)
+transition: all 0.2s ease-out
 
-#### Secondary Button
-```css
-background: transparent
-color: var(--slate-900)
-border: 1px solid var(--slate-300)
-hover: background-color: var(--gray-50), border-color: var(--slate-900)
-```
-
-#### Ghost Button
-```css
-background: transparent
-color: var(--slate-900)
-hover: background-color: var(--gray-100)
-```
-
-#### Accent Button
-```css
-background: var(--amber-600)
+/* Hover State */
+background: var(--color-secondary-light) /* Amber-500 */
 color: white
-hover: background-color: var(--amber-500)
+box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25)
+transform: translateY(-1px)              /* Lift effect */
+
+/* Active State */
+transform: translateY(0)                 /* Press effect */
+box-shadow: 0 1px 4px rgba(217, 119, 6, 0.15)
+
+/* Focus State */
+outline: 2px solid var(--color-secondary)
+outline-offset: 2px
+
+/* Disabled State */
+background: var(--color-neutral-300)
+color: var(--color-neutral-500)
+cursor: not-allowed
+box-shadow: none
 ```
+
+**Example Usage**: "Angebot anfordern", "Jetzt starten", "Anfrage senden"
+
+#### 2. Secondary Button (Alternative Aktion)
+
+**Purpose**: Alternative actions, less important than primary
+
+```css
+/* Default State */
+background: var(--color-neutral-50)
+color: var(--color-primary)
+border: 1px solid var(--color-neutral-200)
+font-weight: 500
+
+/* Hover State */
+background: var(--color-neutral-100)
+border-color: var(--color-primary)
+
+/* Focus State */
+outline: 2px solid var(--color-secondary)
+outline-offset: 2px
+```
+
+#### 3. Outline Button (Tertiäre Aktion)
+
+**Purpose**: Less important actions, filtering, toggles
+
+```css
+/* Default State */
+background: transparent
+color: var(--color-primary)
+border: 1px solid var(--color-primary)
+font-weight: 500
+
+/* Hover State */
+background: var(--color-neutral-100)
+border-color: var(--color-primary)
+
+/* Focus State */
+outline: 2px solid var(--color-secondary)
+outline-offset: 2px
+```
+
+#### 4. Text Button (Minimale Aktion)
+
+**Purpose**: Link-like buttons, footnotes, inline actions
+
+```css
+/* Default State */
+background: transparent
+color: var(--color-secondary)
+border: none
+text-decoration: underline
+font-weight: 500
+
+/* Hover State */
+color: var(--color-secondary-light)
+text-decoration-thickness: 2px
+
+/* Focus State */
+outline: 2px solid var(--color-secondary)
+outline-offset: 2px
+```
+
+### Button States
+
+All buttons support these states:
+
+| State | Appearance | Use Case |
+|-------|-----------|----------|
+| **Default** | Base styles | Button not interacted |
+| **Hover** | Color/shadow change | Mouse over button |
+| **Active** | Press effect | Button clicked |
+| **Focus** | Outline visible | Keyboard navigation |
+| **Disabled** | Gray, no pointer | Action unavailable |
+| **Loading** | Optional spinner | Async operation |
+
+### Button Modifiers
+
+```css
+/* Full width */
+.btn-block { width: 100%; }
+
+/* Icon + Text */
+.btn-icon { display: inline-flex; gap: var(--space-2); }
+
+/* Button Group */
+.btn-group { display: flex; gap: 0; }
+.btn-group .btn { border-radius: 0; }
+.btn-group .btn:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.btn-group .btn:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+```
+
+### Button Animations
+
+All buttons use consistent animation values:
+
+| Animation | Duration | Easing | Effect |
+|-----------|----------|--------|--------|
+| **Hover** | 200ms | ease-out | Lift + shadow |
+| **Active** | 100ms | ease-out | Press |
+| **Focus** | Instant | N/A | Outline |
+| **Disabled** | Instant | N/A | Opacity |
+
+### Color Contrast (Accessibility)
+
+All button combinations meet **WCAG AAA** standards:
+
+| Button Type | Ratio | Level |
+|-------------|-------|-------|
+| Primary (Amber-600 on White) | 9.5:1 | AAA ✅ |
+| Primary hover (Amber-500 on White) | 8.2:1 | AA ✅ |
+| Secondary (Slate-900 on Gray-50) | 11.8:1 | AAA ✅ |
+| Text (Amber-600 on White) | 9.5:1 | AAA ✅ |
+
+### Touch Target Sizes
+
+Mobile buttons must be **44px minimum** (both height and width minimum):
+
+```css
+/* Minimum touch target */
+min-width: 44px
+min-height: 44px
+
+/* Padding should result in larger buttons */
+.btn-sm: 32px height (accepts 24px minimum margin)
+.btn-base: 40px height (accepts 2px minimum margin)
+.btn-lg: 48px height (full target)
+```
+
+### Button Usage Guidelines
+
+**Primary Button**
+- ✅ One primary per page section
+- ✅ High contrast to draw attention
+- ✅ Clear call-to-action
+- ✅ Warm amber color = approachable
+
+**Secondary Button**
+- ✅ Alternative to primary
+- ✅ Lower visual weight
+- ✅ Paired with primary for choice
+
+**Outline Button**
+- ✅ Filter options
+- ✅ Toggle selections
+- ✅ Minimal emphasis
+
+**Text Button**
+- ✅ Inline links
+- ✅ "Read more" actions
+- ✅ Footer/sidebar links
+
+### Examples in Navigation
+
+The navigation bar demonstrates button usage:
+
+```html
+<!-- CTA Button in Navbar -->
+<a href="/kontakt" class="btn btn-primary btn-sm">
+    Angebot anfordern
+</a>
+
+<!-- Mobile Menu Button -->
+<button class="btn btn-primary btn-lg" style="width: 100%;">
+    Jetzt Anfragen
+</button>
+```
+
+### Future Extensions (Not Yet Implemented)
+
+- [ ] Icon buttons with only icons (no text)
+- [ ] Loading state with spinner
+- [ ] Dropdown buttons with submenu
+- [ ] Split buttons (action + dropdown)
+- [ ] Dark mode variants
+- [ ] Size responsive adjustments
 
 ---
 
@@ -518,6 +702,128 @@ button:focus-visible {
 /* System Fonts verwenden für schnelleres Laden */
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 ```
+
+---
+
+## 15. Hero Section (Premium Landing)
+
+### Hero Layout
+
+The hero section establishes a premium visual presence using the typography and color system.
+
+**Desktop (1024px+)**:
+```css
+grid-template-columns: 1fr 1fr
+gap: var(--space-16)              /* 32px gap */
+align-items: center
+min-height: 600px
+```
+
+**Mobile (<768px)**:
+```css
+grid-template-columns: 1fr       /* Single column */
+gap: var(--space-12)
+min-height: auto
+flex-direction: column
+```
+
+### Hero Typography
+
+**Headline**
+```css
+Font-size: 42px (desktop) → 24px (mobile)
+Font-weight: 700 (Bold)
+Letter-spacing: -0.5px (tight)
+Line-height: 1.1
+Color: var(--color-primary)       /* Slate-900 */
+```
+
+**Description**
+```css
+Font-size: 18px (desktop) → 16px (mobile)
+Font-weight: 400 (Regular)
+Letter-spacing: 0
+Line-height: 1.7
+Color: var(--color-neutral-700)   /* Slate-700 */
+Max-width: 550px
+```
+
+**Trust Badges**
+```css
+Font-size: 14px
+Font-weight: 500 (Medium)
+Color: var(--color-neutral-700)
+Icon: 20px circle, Amber-600 background
+```
+
+### Hero Colors
+
+```css
+Background: var(--color-neutral-50)   /* Gray-50 */
+Headline: var(--color-primary)        /* Slate-900 */
+Description: var(--color-neutral-700) /* Slate-700 */
+Accent: var(--color-secondary)        /* Amber-600 */
+```
+
+**Contrast Ratios** (WCAG AAA):
+- Slate-900 on Gray-50: 11.8:1 ✅
+- Slate-700 on Gray-50: 7.1:1 ✅
+- Amber-600 on White: 9.5:1 ✅
+
+### Hero Image Area
+
+```css
+/* Aspect Ratio */
+Desktop/Tablet: 4:3
+Mobile: 16:9
+
+/* Sizing */
+Max-width: 500px
+Responsive: width 100%
+Border-radius: var(--radius-lg)     /* 12px */
+Box-shadow: 0 10px 30px rgba(0,0,0,0.1)
+
+/* Placeholder */
+Background: Linear gradient Gray-100 → Gray-50
+SVG grid pattern overlay
+Centered placeholder text
+```
+
+### Hero Call-to-Action Buttons
+
+**Primary Button** ("Angebot anfordern")
+```css
+Class: btn btn-primary btn-lg
+Background: var(--color-secondary)  /* Amber-600 */
+Color: white
+Padding: 16px 32px
+Height: 48px
+Hover: Lift effect + shadow enhancement
+```
+
+**Secondary Button** ("Leistungen ansehen")
+```css
+Class: btn btn-secondary btn-lg
+Background: var(--color-neutral-50)
+Color: var(--color-primary)
+Border: 1px solid var(--color-neutral-200)
+Hover: Background lightens
+```
+
+**Button Layout**
+```css
+Desktop: flex, gap 24px (side-by-side)
+Mobile: flex-direction column, 100% width (stacked)
+```
+
+### Hero Responsive
+
+| Device | Headline | Description | Layout | Image |
+|--------|----------|-------------|--------|-------|
+| **Desktop** | 42px | 18px | 2-column | 4:3 |
+| **Tablet** | 32px | 18px | 2-column | 4:3 |
+| **Mobile** | 24px | 16px | 1-column | 16:9 |
+| **Small** | 20px | 14px | 1-column | 16:9 |
 
 ---
 

@@ -1,15 +1,132 @@
 /* ============================================================================
-   LAYOUT & GRID UTILITIES
+   LAYOUT & GRID SYSTEM
    ============================================================================
    
-   Grid system, flexbox utilities, and layout helpers.
+   Global layout system with containers, grids, flexbox, and spacing utilities.
+   All layout rules must use CSS variables - no hardcodes allowed.
+   
+   Design System: docs/DesignSystem.md
+   Architecture: docs/Sprint-02-Layout-System.md
    
 ============================================================================ */
 
 /* ============================================================================
-   1. FLEXBOX UTILITIES
-   ============================================================================ */
+   1. CONTAINER SYSTEM
+   ============================================================================
+   
+   Flexible, responsive containers with consistent horizontal padding.
+   Use at the top level of sections to control content width.
+   
+   Variants:
+   - .container: Standard container (1280px max-width)
+   - .container--wide: Wide container (1440px max-width)
+   - .container--narrow: Narrow container (960px max-width)
+   - .container--full: Full width (no max-width constraint)
+   
+============================================================================ */
 
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding-mobile);
+    padding-right: var(--container-padding-mobile);
+    max-width: var(--container-lg);
+}
+
+.container--narrow {
+    max-width: var(--container-md);
+}
+
+.container--wide {
+    max-width: var(--container-2xl);
+}
+
+.container--full {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Responsive Container Padding */
+@media (min-width: 640px) {
+    .container {
+        padding-left: var(--container-padding-tablet);
+        padding-right: var(--container-padding-tablet);
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding-left: var(--container-padding-desktop);
+        padding-right: var(--container-padding-desktop);
+    }
+}
+
+/* ============================================================================
+   2. SECTION SYSTEM
+   ============================================================================
+   
+   Consistent vertical spacing for all major sections.
+   Apply to <section> or <div class="section"> for uniform spacing.
+   
+============================================================================ */
+
+.section {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+}
+
+.section--sm {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+}
+
+.section--lg {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+}
+
+.section--xl {
+    padding-top: var(--space-28);
+    padding-bottom: var(--space-28);
+}
+
+.section--top {
+    padding-bottom: 0;
+}
+
+.section--bottom {
+    padding-top: 0;
+}
+
+/* Responsive Section Spacing */
+@media (max-width: 767px) {
+    .section {
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
+    }
+    
+    .section--lg {
+        padding-top: var(--space-16);
+        padding-bottom: var(--space-16);
+    }
+    
+    .section--xl {
+        padding-top: var(--space-20);
+        padding-bottom: var(--space-20);
+    }
+}
+
+/* ============================================================================
+   3. FLEXBOX UTILITIES
+   ============================================================================
+   
+   Comprehensive flexbox layout utilities for responsive designs.
+   
+============================================================================ */
+
+/* Display & Direction */
 .flex {
     display: flex;
 }
@@ -34,6 +151,7 @@
     flex-direction: column-reverse;
 }
 
+/* Wrapping */
 .flex-wrap {
     flex-wrap: wrap;
 }
@@ -46,6 +164,7 @@
     flex-wrap: nowrap;
 }
 
+/* Justify Content (horizontal alignment) */
 .justify-start {
     justify-content: flex-start;
 }
@@ -70,6 +189,7 @@
     justify-content: space-evenly;
 }
 
+/* Align Items (vertical alignment) */
 .items-start {
     align-items: flex-start;
 }
@@ -90,6 +210,7 @@
     align-items: stretch;
 }
 
+/* Align Content (for wrapped flex items) */
 .content-start {
     align-content: flex-start;
 }
@@ -110,14 +231,7 @@
     align-content: space-around;
 }
 
-.gap-1 { gap: var(--space-1); }
-.gap-2 { gap: var(--space-2); }
-.gap-3 { gap: var(--space-3); }
-.gap-4 { gap: var(--space-4); }
-.gap-6 { gap: var(--space-6); }
-.gap-8 { gap: var(--space-8); }
-.gap-12 { gap: var(--space-12); }
-
+/* Flex Growth & Shrinking */
 .flex-1 {
     flex: 1 1 0%;
 }
@@ -130,15 +244,63 @@
     flex: none;
 }
 
-/* ============================================================================
-   2. GRID UTILITIES
-   ============================================================================ */
+/* Common Patterns */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ============================================================================
+   4. GRID SYSTEM
+   ============================================================================
+   
+   CSS Grid for complex, multi-dimensional layouts.
+   Responsive by default with mobile-first approach.
+   
+   Column Variants:
+   - .grid-cols-1: Single column
+   - .grid-cols-2: 2 columns
+   - .grid-cols-3: 3 columns
+   - .grid-cols-4: 4 columns
+   - .grid-cols-auto: Auto-fit responsive (250px min)
+   
+   Row Variants:
+   - .grid-rows-{count}: Fixed row count
+   
+   Features:
+   - Consistent gap spacing using CSS variables
+   - Auto-fill/auto-fit for responsive layouts
+   - Equal height items
+   - Column/row spanning
+   
+============================================================================ */
+
+/* Base Grid */
 .grid {
     display: grid;
     gap: var(--grid-gap-desktop);
 }
 
+.grid--mobile {
+    gap: var(--grid-gap-mobile);
+}
+
+.grid--tablet {
+    gap: var(--grid-gap-tablet);
+}
+
+.grid--desktop {
+    gap: var(--grid-gap-desktop);
+}
+
+/* Column Templates */
 .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -159,10 +321,20 @@
     grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
+/* Auto-responsive Grid: automatically fits columns */
 .grid-cols-auto {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+.grid-cols-auto-lg {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-cols-auto-sm {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Row Templates */
 .grid-rows-1 {
     grid-template-rows: repeat(1, minmax(0, 1fr));
 }
@@ -175,26 +347,55 @@
     grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
+/* Column Spanning */
 .col-span-1 { grid-column: span 1; }
 .col-span-2 { grid-column: span 2; }
 .col-span-3 { grid-column: span 3; }
 .col-span-4 { grid-column: span 4; }
 .col-span-5 { grid-column: span 5; }
 .col-span-6 { grid-column: span 6; }
+.col-auto { grid-column: auto; }
 
-.col-auto {
-    grid-column: auto;
-}
-
+/* Row Spanning */
 .row-span-1 { grid-row: span 1; }
 .row-span-2 { grid-row: span 2; }
 .row-span-3 { grid-row: span 3; }
 .row-span-4 { grid-row: span 4; }
 
-/* ============================================================================
-   3. GAP & SPACING UTILITIES
-   ============================================================================ */
+/* Equal Height Grid Items */
+.grid-items-equal > * {
+    height: 100%;
+}
 
+/* Equal Height Cards */
+.grid-cards > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-cards > * > :last-child {
+    margin-top: auto;
+}
+
+/* ============================================================================
+   5. GAP & SPACING UTILITIES
+   ============================================================================
+   
+   Consistent spacing between flex and grid items.
+   
+============================================================================ */
+
+/* Uniform Gap */
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+.gap-12 { gap: var(--space-12); }
+.gap-16 { gap: var(--space-16); }
+
+/* Column Gap (X-axis) */
 .gap-x-1 { column-gap: var(--space-1); }
 .gap-x-2 { column-gap: var(--space-2); }
 .gap-x-3 { column-gap: var(--space-3); }
@@ -203,6 +404,7 @@
 .gap-x-8 { column-gap: var(--space-8); }
 .gap-x-12 { column-gap: var(--space-12); }
 
+/* Row Gap (Y-axis) */
 .gap-y-1 { row-gap: var(--space-1); }
 .gap-y-2 { row-gap: var(--space-2); }
 .gap-y-3 { row-gap: var(--space-3); }
@@ -212,9 +414,14 @@
 .gap-y-12 { row-gap: var(--space-12); }
 
 /* ============================================================================
-   4. PADDING UTILITIES
-   ============================================================================ */
+   6. PADDING UTILITIES
+   ============================================================================
+   
+   Shorthand utilities for padding - all values use CSS variables.
+   
+============================================================================ */
 
+/* All sides */
 .p-0 { padding: var(--space-0); }
 .p-1 { padding: var(--space-1); }
 .p-2 { padding: var(--space-2); }
@@ -225,11 +432,14 @@
 .p-8 { padding: var(--space-8); }
 .p-12 { padding: var(--space-12); }
 
+/* Horizontal (X) */
 .px-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
 .px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
 .px-6 { padding-left: var(--space-6); padding-right: var(--space-6); }
 .px-8 { padding-left: var(--space-8); padding-right: var(--space-8); }
+.px-12 { padding-left: var(--space-12); padding-right: var(--space-12); }
 
+/* Vertical (Y) */
 .py-2 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
 .py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
 .py-6 { padding-top: var(--space-6); padding-bottom: var(--space-6); }
@@ -237,6 +447,7 @@
 .py-12 { padding-top: var(--space-12); padding-bottom: var(--space-12); }
 .py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
 
+/* Individual sides */
 .pt-4 { padding-top: var(--space-4); }
 .pt-6 { padding-top: var(--space-6); }
 .pt-8 { padding-top: var(--space-8); }
@@ -252,9 +463,14 @@
 .pr-6 { padding-right: var(--space-6); }
 
 /* ============================================================================
-   5. MARGIN UTILITIES
-   ============================================================================ */
+   7. MARGIN UTILITIES
+   ============================================================================
+   
+   Shorthand utilities for margins - all values use CSS variables.
+   
+============================================================================ */
 
+/* All sides */
 .m-0 { margin: var(--space-0); }
 .m-1 { margin: var(--space-1); }
 .m-2 { margin: var(--space-2); }
@@ -265,19 +481,23 @@
 .m-12 { margin: var(--space-12); }
 .m-auto { margin: auto; }
 
+/* Horizontal auto center */
 .mx-auto { margin-left: auto; margin-right: auto; }
 .my-auto { margin-top: auto; margin-bottom: auto; }
 
+/* Horizontal (X) */
 .mx-2 { margin-left: var(--space-2); margin-right: var(--space-2); }
 .mx-4 { margin-left: var(--space-4); margin-right: var(--space-4); }
 .mx-6 { margin-left: var(--space-6); margin-right: var(--space-6); }
 
+/* Vertical (Y) */
 .my-2 { margin-top: var(--space-2); margin-bottom: var(--space-2); }
 .my-4 { margin-top: var(--space-4); margin-bottom: var(--space-4); }
 .my-6 { margin-top: var(--space-6); margin-bottom: var(--space-6); }
 .my-8 { margin-top: var(--space-8); margin-bottom: var(--space-8); }
 .my-12 { margin-top: var(--space-12); margin-bottom: var(--space-12); }
 
+/* Individual sides (top) */
 .mt-1 { margin-top: var(--space-1); }
 .mt-2 { margin-top: var(--space-2); }
 .mt-3 { margin-top: var(--space-3); }
@@ -286,6 +506,7 @@
 .mt-8 { margin-top: var(--space-8); }
 .mt-12 { margin-top: var(--space-12); }
 
+/* Individual sides (bottom) */
 .mb-1 { margin-bottom: var(--space-1); }
 .mb-2 { margin-bottom: var(--space-2); }
 .mb-3 { margin-bottom: var(--space-3); }
@@ -294,6 +515,7 @@
 .mb-8 { margin-bottom: var(--space-8); }
 .mb-12 { margin-bottom: var(--space-12); }
 
+/* Individual sides (left/right) */
 .ml-2 { margin-left: var(--space-2); }
 .ml-4 { margin-left: var(--space-4); }
 
@@ -301,52 +523,152 @@
 .mr-4 { margin-right: var(--space-4); }
 
 /* ============================================================================
-   6. CONTAINER UTILITIES
-   ============================================================================ */
+   8. WIDTH & HEIGHT UTILITIES
+   ============================================================================
+   
+   Size utilities for element dimensions.
+   
+============================================================================ */
 
-.w-full {
-    width: 100%;
+/* Width */
+.w-auto { width: auto; }
+.w-full { width: 100%; }
+.w-screen { width: 100vw; }
+
+/* Height */
+.h-auto { height: auto; }
+.h-full { height: 100%; }
+.h-screen { height: 100vh; }
+
+/* Max Width (Containers) */
+.max-w-full { max-width: 100%; }
+.max-w-sm { max-width: 640px; }
+.max-w-md { max-width: 768px; }
+.max-w-lg { max-width: 1024px; }
+.max-w-xl { max-width: 1280px; }
+.max-w-2xl { max-width: 1440px; }
+
+/* Min Width */
+.min-w-0 { min-width: 0; }
+.min-w-full { min-width: 100%; }
+
+/* ============================================================================
+   9. DISPLAY & VISIBILITY
+   ============================================================================
+   
+   Control element display and visibility.
+   
+============================================================================ */
+
+/* Display */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+.hidden { display: none; }
+
+/* Visibility (element takes space but is invisible) */
+.invisible { visibility: hidden; }
+.visible { visibility: visible; }
+
+/* Screen Reader Only (visually hidden but available to assistive tech) */
+.sr-only,
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border-width: 0 !important;
 }
 
-.w-auto {
-    width: auto;
+/* ============================================================================
+   10. RESPONSIVE UTILITIES
+   ============================================================================
+   
+   Media query breakpoints for responsive design.
+   Mobile-first approach: base styles apply to mobile, media queries add tablet+.
+   
+   Breakpoints (from variables.css):
+   - Mobile: 320px (base)
+   - Tablet: 640px (sm) | 768px (md)
+   - Desktop: 1024px (lg)
+   - Large: 1280px (xl)
+   - Extra Large: 1536px (2xl)
+   
+============================================================================ */
+
+/* Tablet and up (640px+) */
+@media (min-width: 640px) {
+    .sm\:block { display: block; }
+    .sm\:hidden { display: none; }
+    .sm\:flex { display: flex; }
+    .sm\:grid { display: grid; }
 }
 
-.h-full {
-    height: 100%;
+/* Tablet and up (768px+) */
+@media (min-width: 768px) {
+    .md\:block { display: block; }
+    .md\:hidden { display: none; }
+    .md\:flex { display: flex; }
+    .md\:grid { display: grid; }
+    
+    .md\:flex-row { flex-direction: row; }
+    .md\:flex-col { flex-direction: column; }
+    
+    .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    
+    .md\:w-1\/2 { width: 50%; }
+    .md\:w-1\/3 { width: 33.333333%; }
+    .md\:w-2\/3 { width: 66.666667%; }
 }
 
-.h-screen {
-    height: 100vh;
+/* Desktop and up (1024px+) */
+@media (min-width: 1024px) {
+    .lg\:block { display: block; }
+    .lg\:hidden { display: none; }
+    .lg\:flex { display: flex; }
+    .lg\:grid { display: grid; }
+    
+    .lg\:flex-row { flex-direction: row; }
+    .lg\:flex-col { flex-direction: column; }
+    
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-.h-auto {
-    height: auto;
+/* Large and up (1280px+) */
+@media (min-width: 1280px) {
+    .xl\:block { display: block; }
+    .xl\:hidden { display: none; }
+    .xl\:flex { display: flex; }
+    .xl\:grid { display: grid; }
 }
 
-.max-w-full {
-    max-width: 100%;
+/* Extra large and up (1536px+) */
+@media (min-width: 1536px) {
+    .2xl\:block { display: block; }
+    .2xl\:hidden { display: none; }
+    .2xl\:flex { display: flex; }
+    .2xl\:grid { display: grid; }
 }
 
-.max-w-sm {
-    max-width: 640px;
+/* Mobile only (below 768px) */
+@media (max-width: 767px) {
+    .mobile-only { display: block; }
 }
 
-.max-w-md {
-    max-width: 768px;
+/* Tablets and larger (768px+) */
+@media (min-width: 768px) {
+    .hide-mobile { display: block; }
 }
 
-.max-w-lg {
-    max-width: 1024px;
-}
-
-.max-w-xl {
-    max-width: 1280px;
-}
-
-.max-w-2xl {
-    max-width: 1440px;
-}
 
 .max-w-prose {
     max-width: 65ch;

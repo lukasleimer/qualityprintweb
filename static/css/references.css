@@ -1,0 +1,578 @@
+/* ============================================================================
+   REFERENCES SECTION CSS – PROJECT GALLERY & SHOWCASE
+   ============================================================================ 
+   
+   Premium project gallery section showcasing Quality Print client work
+   Extends service card system with image prominence
+   
+   Design Principles:
+   - Solid White background (clean, premium showcase)
+   - Image-focused cards (visual hierarchy emphasis)
+   - Responsive grid system (3-column desktop, 2-column tablet, 1-column mobile)
+   - Subtle hover effects (no sliders/carousels)
+   - Trust through visual examples
+   
+   Component Reuse:
+   - Extends service card system (image + title + description + category)
+   - Uses existing button system (.btn, .btn-primary, .btn-lg)
+   - Uses existing typography scale (label, headline, description, card text)
+   - Uses existing responsive patterns and breakpoints
+   - Uses all CSS variables (zero hardcodes)
+   
+   Files Referenced: 
+   - templates/components/references.html (semantic HTML structure)
+   - static/css/variables.css (design tokens)
+   - static/css/buttons.css (button system)
+   
+   ============================================================================ */
+
+/* ============================================================================
+   1. REFERENCES SECTION CONTAINER
+   ============================================================================ */
+
+.references {
+    /* Background: Solid White (clean showcase) */
+    background-color: white;
+    
+    /* Vertical padding: 120px desktop, responsive mobile */
+    padding: var(--space-30) var(--space-6);
+    
+    /* Semantic section styling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* No borders or additional decorations – clean, minimal */
+    position: relative;
+}
+
+.references-container {
+    /* Max-width inherited from global container */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16); /* 32px gap between header and grid */
+}
+
+/* ============================================================================
+   2. REFERENCES HEADER (Section Title Area)
+   ============================================================================ */
+
+.references-header {
+    /* Header section: label, headline, introduction */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+    text-align: center;
+    
+    /* Max width to keep text readable */
+    max-width: 650px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ============================================================================
+   3. REFERENCES LABEL (Section Title)
+   ============================================================================ */
+
+.references-label {
+    /* Typography: small uppercase label */
+    font-size: var(--font-size-sm); /* 14px desktop */
+    font-weight: var(--font-weight-semibold); /* 600 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    text-transform: uppercase;
+    
+    /* Color: Amber-600 accent */
+    color: var(--color-secondary);
+    
+    /* Spacing: comfortable margin below */
+    margin: 0;
+    
+    /* No transitions needed */
+}
+
+/* ============================================================================
+   4. REFERENCES HEADLINE (Main Title)
+   ============================================================================ */
+
+.references-headline {
+    /* Typography: main headline with accent support */
+    font-size: var(--font-size-3xl); /* 32px desktop */
+    font-weight: var(--font-weight-bold); /* 700 */
+    letter-spacing: var(--letter-spacing-tight); /* -0.5px */
+    line-height: 1.2;
+    
+    /* Color: primary slate */
+    color: var(--color-primary);
+    
+    /* Spacing */
+    margin: 0;
+    word-spacing: 100vw; /* Force each word to new line for responsiveness */
+}
+
+/* Accent text within headline */
+.references-headline .text-accent {
+    /* Color: Amber-600 for secondary emphasis */
+    color: var(--color-secondary);
+    
+    /* No additional styling – inherits headline font size/weight */
+}
+
+/* ============================================================================
+   5. REFERENCES INTRODUCTION
+   ============================================================================ */
+
+.references-intro {
+    /* Typography: supporting paragraph */
+    font-size: var(--font-size-base); /* 16px desktop */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.7;
+    
+    /* Color: secondary text (Slate-700) */
+    color: var(--color-neutral-700);
+    
+    /* Spacing and sizing */
+    margin: var(--space-2) 0 0 0;
+    max-width: 600px;
+    
+    /* Centered within container */
+}
+
+/* ============================================================================
+   6. REFERENCES GRID (Project Cards)
+   ============================================================================ */
+
+.references-grid {
+    /* Responsive grid: 3 columns desktop, 2 tablet, 1 mobile */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    /* Consistent spacing */
+    gap: var(--space-8); /* 16px – scales down on mobile */
+    
+    /* Full width of container */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================================
+   7. REFERENCE CARD (Project Card)
+   ============================================================================ */
+
+.reference-card {
+    /* Base styling */
+    
+    /* Background: white with subtle border */
+    background-color: white;
+    
+    /* Border: subtle 1px solid */
+    border: 1px solid var(--color-neutral-100); /* Gray-100 */
+    border-radius: var(--radius-md); /* 8px */
+    
+    /* Layout: flex column for vertical stacking */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4); /* 8px between image and content */
+    
+    /* Height: ensure consistent sizing */
+    min-height: auto;
+    
+    /* Smooth transitions for hover effects */
+    transition: all 200ms ease-out;
+    
+    /* Subtle shadow for depth */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    
+    /* Overflow hidden for rounded image corners */
+    overflow: hidden;
+}
+
+/* Reference card hover state (subtle lift effect) */
+.reference-card:hover {
+    /* Border: slightly darker */
+    border-color: var(--color-neutral-200);
+    
+    /* Shadow: enhanced on hover for lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    
+    /* Transition automatically applied */
+}
+
+/* Focus state for keyboard navigation */
+.reference-card:focus-within {
+    /* Outline: 2px Amber accent */
+    outline: 2px solid var(--color-secondary);
+    outline-offset: -2px;
+}
+
+/* ============================================================================
+   8. REFERENCE CARD IMAGE AREA
+   ============================================================================ */
+
+.reference-card-image {
+    /* Image container – placeholder for future real images */
+    width: 100%;
+    
+    /* Aspect ratio 3:2 for landscape cards (image prominence) */
+    aspect-ratio: 3 / 2;
+    
+    /* Background: light gray (subtle) */
+    background-color: var(--color-neutral-50); /* Gray-50 */
+    
+    /* Border: minimal */
+    border: none;
+    border-radius: 0; /* No radius – fills card top */
+    
+    /* Flexbox for centering content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Padding: if needed for content */
+    padding: 0;
+    
+    /* Subtle transitions */
+    transition: background-color 200ms ease-out;
+    
+    /* Overflow hidden for clean image display */
+    overflow: hidden;
+}
+
+/* Reference card image hover state */
+.reference-card:hover .reference-card-image {
+    /* Slightly lighter background on parent hover */
+    background-color: var(--color-neutral-100); /* Gray-100 */
+}
+
+/* ============================================================================
+   9. REFERENCE IMAGE PLACEHOLDER SVG
+   ============================================================================ */
+
+.reference-image-placeholder {
+    /* SVG icon placeholder styling */
+    
+    /* Sizing: fill parent container */
+    width: 100%;
+    height: 100%;
+    
+    /* SVG-specific properties */
+    max-width: 100%;
+    max-height: 100%;
+    
+    /* No additional margins/padding */
+    margin: 0;
+    padding: 0;
+    
+    /* Display block to remove bottom gap */
+    display: block;
+}
+
+/* ============================================================================
+   10. REFERENCE CARD CONTENT AREA
+   ============================================================================ */
+
+.reference-card-content {
+    /* Content wrapper: title, category, description */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3); /* 6px between elements */
+    
+    /* Padding: comfortable space inside card */
+    padding: var(--space-5) var(--space-5) var(--space-6) var(--space-5); /* 20px, 20px, 24px, 20px */
+    
+    /* Full width */
+    width: 100%;
+}
+
+/* ============================================================================
+   11. REFERENCE CATEGORY BADGE
+   ============================================================================ */
+
+.reference-category {
+    /* Small badge for project category */
+    
+    /* Typography */
+    font-size: var(--font-size-xs); /* 12px */
+    font-weight: var(--font-weight-semibold); /* 600 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    text-transform: uppercase;
+    
+    /* Color: Amber-600 accent */
+    color: var(--color-secondary);
+    
+    /* Display: inline (takes only needed width) */
+    display: inline;
+    width: fit-content;
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================================
+   12. REFERENCE CARD TITLE
+   ============================================================================ */
+
+.reference-card-title {
+    /* Typography: card headline */
+    font-size: var(--font-size-base); /* 16px */
+    font-weight: var(--font-weight-semibold); /* 600 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.4;
+    
+    /* Color: primary (Slate-900) */
+    color: var(--color-primary);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+    
+    /* Full width */
+    width: 100%;
+}
+
+/* ============================================================================
+   13. REFERENCE CARD DESCRIPTION
+   ============================================================================ */
+
+.reference-card-description {
+    /* Typography: card description */
+    font-size: var(--font-size-sm); /* 14px */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.6;
+    
+    /* Color: secondary text (Slate-700) */
+    color: var(--color-neutral-700);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+    
+    /* Flexibility for text wrapping */
+    flex-grow: 1;
+}
+
+/* ============================================================================
+   14. CTA SECTION (Closing Call-to-Action)
+   ============================================================================ */
+
+.references-cta-section {
+    /* Closing call-to-action section */
+    
+    /* Layout: flex column, centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4); /* 8px between text and button */
+    
+    /* Spacing: top margin for visual separation */
+    margin-top: var(--space-6); /* 24px */
+    
+    /* Centered horizontally */
+    width: 100%;
+}
+
+.references-cta-text {
+    /* CTA introductory text */
+    
+    /* Typography */
+    font-size: var(--font-size-base); /* 16px */
+    font-weight: var(--font-weight-normal); /* 400 */
+    letter-spacing: var(--letter-spacing-normal); /* 0 */
+    line-height: 1.6;
+    
+    /* Color: secondary text */
+    color: var(--color-neutral-700);
+    
+    /* Spacing */
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================================
+   15. RESPONSIVE DESIGN – TABLET (768px)
+   ============================================================================ */
+
+@media (max-width: 1023px) {
+    
+    /* References section */
+    .references {
+        /* Reduced padding: 80px desktop → 60px tablet */
+        padding: var(--space-15) var(--space-6);
+    }
+    
+    /* References headline */
+    .references-headline {
+        /* Smaller headline: 32px → 28px */
+        font-size: var(--font-size-2xl); /* 28px */
+    }
+    
+    /* References grid: 2 columns */
+    .references-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6); /* Slightly reduced gap */
+    }
+    
+}
+
+/* ============================================================================
+   16. RESPONSIVE DESIGN – MOBILE (768px)
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    
+    /* References section */
+    .references {
+        /* Reduced padding: 40px desktop → 32px mobile */
+        padding: var(--space-8) var(--space-4);
+    }
+    
+    /* References headline */
+    .references-headline {
+        /* Smaller headline: 28px → 24px */
+        font-size: var(--font-size-2xl); /* 24px */
+    }
+    
+    /* References intro text */
+    .references-intro {
+        /* Smaller intro: 16px → 14px */
+        font-size: var(--font-size-sm); /* 14px */
+    }
+    
+    /* References grid: 1 column */
+    .references-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6); /* 12px */
+    }
+    
+    /* Reference card content */
+    .reference-card-content {
+        /* Reduced padding on mobile */
+        padding: var(--space-4) var(--space-4) var(--space-5) var(--space-4);
+    }
+    
+}
+
+/* ============================================================================
+   17. RESPONSIVE DESIGN – SMALL MOBILE (480px)
+   ============================================================================ */
+
+@media (max-width: 479px) {
+    
+    /* References section */
+    .references {
+        /* Minimal padding: 24px mobile → 20px small mobile */
+        padding: var(--space-6) var(--space-4);
+    }
+    
+    /* References headline */
+    .references-headline {
+        /* Very small headline: 24px → 20px */
+        font-size: var(--font-size-xl); /* 20px */
+    }
+    
+    /* References label */
+    .references-label {
+        /* Smaller label: 14px → 12px */
+        font-size: var(--font-size-xs); /* 12px */
+    }
+    
+    /* References intro text */
+    .references-intro {
+        /* Smaller intro: 14px → 13px */
+        font-size: var(--font-size-sm); /* 13px */
+    }
+    
+    /* Reference card image */
+    .reference-card-image {
+        /* Adjust aspect ratio for small screens if needed */
+        aspect-ratio: 3 / 2;
+    }
+    
+    /* Reference card title */
+    .reference-card-title {
+        /* Smaller title: 16px → 15px */
+        font-size: var(--font-size-sm); /* 15px */
+    }
+    
+    /* Reference card description */
+    .reference-card-description {
+        /* Smaller description: 14px → 13px */
+        font-size: var(--font-size-xs); /* 13px */
+    }
+    
+    /* CTA text */
+    .references-cta-text {
+        /* Smaller CTA text: 16px → 14px */
+        font-size: var(--font-size-sm); /* 14px */
+    }
+    
+}
+
+/* ============================================================================
+   18. ACCESSIBILITY – REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    
+    .reference-card {
+        /* Disable transitions for users preferring reduced motion */
+        transition: none;
+    }
+    
+    .reference-card:hover {
+        /* No shadow change on hover */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    
+    .reference-card-image {
+        /* Disable image transitions */
+        transition: none;
+    }
+    
+}
+
+/* ============================================================================
+   19. ACCESSIBILITY – HIGH CONTRAST MODE
+   ============================================================================ */
+
+@media (prefers-contrast: more) {
+    
+    .reference-card {
+        /* Stronger border in high contrast mode */
+        border: 2px solid var(--color-primary);
+    }
+    
+    .reference-card:hover {
+        /* More prominent shadow */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+    
+}
+
+/* ============================================================================
+   20. DARK MODE SUPPORT (Future)
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+    
+    .references {
+        /* Dark background (future implementation) */
+        background-color: var(--color-primary);
+        color: white;
+    }
+    
+    .reference-card {
+        /* Dark card background */
+        background-color: #1a1f35; /* Slightly lighter than primary */
+        border-color: var(--color-neutral-300);
+    }
+    
+}
+

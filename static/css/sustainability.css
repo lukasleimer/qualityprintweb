@@ -1,0 +1,92 @@
+/* Sustainability Section Styles
+   ============================================================================
+   Component: templates/components/sustainability.html
+   Purpose: Environmental commitment, green practices, and certifications
+   
+   This file contains structural styles only.
+   Detailed styling and animations will be implemented in Sprint 2.
+   ============================================================================ */
+
+/* Container & Layout */
+.sustainability {
+    /* Spacing will be defined here */
+}
+
+.sustainability-container {
+    /* Container structure */
+}
+
+.sustainability-header {
+    /* Header section styling */
+}
+
+/* Main Message */
+.sustainability-message {
+    /* Introduction message styling */
+}
+
+.sustainability-message p {
+    /* Message text styling */
+}
+
+/* Sustainability Initiatives Grid */
+.sustainability-initiatives {
+    /* Grid layout for initiatives */
+}
+
+.sustainability-initiative {
+    /* Individual initiative card styling */
+}
+
+.sustainability-initiative h3 {
+    /* Initiative heading styling */
+}
+
+.sustainability-initiative p {
+    /* Initiative description styling */
+}
+
+/* Commitments Section */
+.sustainability-commitments {
+    /* Commitments aside styling */
+}
+
+.sustainability-commitments h3 {
+    /* Commitments heading */
+}
+
+.commitment-list {
+    /* Commitment list styling */
+}
+
+.commitment-list li {
+    /* Individual commitment item styling */
+}
+
+/* CTA Section */
+.sustainability-cta {
+    /* Call to action styling */
+}
+
+.sustainability-cta p {
+    /* CTA text styling */
+}
+
+.sustainability-cta .btn {
+    /* CTA button styling */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sustainability-container {
+        /* Mobile adjustments */
+    }
+    
+    .sustainability-initiatives {
+        /* Mobile grid layout */
+    }
+    
+    .sustainability-message {
+        /* Mobile message layout */
+    }
+}

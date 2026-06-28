@@ -1,0 +1,206 @@
+<!-- ===== ABOUT SECTION ===== -->
+<!-- 
+    Premium About section building trust in Quality Print
+    
+    Structure:
+    - Text area: Section title, headline, description
+    - Image area: Company image placeholder
+    - Values section: Reusable value cards
+    - Metrics section: Reusable stats cards
+    
+    Design Principles (from Navigation & Hero):
+    - Solid background (no gradients)
+    - Generous whitespace
+    - Premium, minimal aesthetic
+    - Reusable card components
+    - Accessible HTML structure
+    
+    Responsive:
+    - Desktop: Two-column text + image, grid values/metrics
+    - Mobile: Single column, stacked values/metrics
+-->
+
+<section class="about" id="about" aria-labelledby="about-heading">
+    <!-- About Container -->
+    <div class="container about-container">
+        
+        <!-- Text + Image Grid (Desktop: 2-column, Mobile: 1-column) -->
+        <div class="about-grid">
+            
+            <!-- Text Content Area (Left on Desktop) -->
+            <div class="about-content">
+                
+                <!-- Section Title (Small, muted) -->
+                <p class="about-label">
+                    Unternehmen
+                </p>
+                
+                <!-- Main Headline -->
+                <h2 class="about-headline" id="about-heading">
+                    Qualität aus
+                    <span class="text-accent">Leidenschaft</span>
+                </h2>
+                
+                <!-- Supporting Description -->
+                <p class="about-description">
+                    Quality Print steht seit mehr als 30 Jahren für hochwertige Druckprodukte 
+                    und persönliche Beratung. Wir kombinieren handwerkliche Präzision mit 
+                    moderner Technologie – für Ihre Erfolgsgeschichte.
+                </p>
+                
+                <!-- Additional Context -->
+                <p class="about-description">
+                    Jedes Projekt ist einzigartig. Deshalb arbeiten wir eng mit unseren Kunden 
+                    zusammen, um ihre Anforderungen perfekt umzusetzen.
+                </p>
+                
+            </div>
+            
+            <!-- Image Area (Right on Desktop) -->
+            <div class="about-image-wrapper">
+                <div class="about-image">
+                    <!-- 
+                        Image Placeholder
+                        Aspect ratio: 4:3
+                        Ready for production image swap
+                    -->
+                    <svg 
+                        class="about-placeholder" 
+                        viewBox="0 0 800 600" 
+                        preserveAspectRatio="xMidYMid slice"
+                        role="img"
+                        aria-label="Unternehmens-Bildplatzhalter"
+                    >
+                        <!-- Placeholder background -->
+                        <rect width="800" height="600" fill="#f3f4f6"/>
+                        
+                        <!-- Subtle grid pattern -->
+                        <defs>
+                            <pattern id="grid-about" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <rect width="40" height="40" fill="none"/>
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+                            </pattern>
+                        </defs>
+                        <rect width="800" height="600" fill="url(#grid-about)"/>
+                        
+                        <!-- Placeholder text -->
+                        <text 
+                            x="400" 
+                            y="300" 
+                            text-anchor="middle"
+                            font-family="system-ui, -apple-system, sans-serif"
+                            font-size="24"
+                            fill="#9ca3af"
+                            dominant-baseline="middle"
+                        >
+                            Unternehmens-Bildbereich
+                        </text>
+                    </svg>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Company Values Section -->
+        <div class="about-section">
+            
+            <!-- Section Label -->
+            <p class="about-label">
+                Unsere Stärken
+            </p>
+            
+            <!-- Section Headline -->
+            <h3 class="about-section-headline">
+                Worauf wir stehen
+            </h3>
+            
+            <!-- Values Grid (Reusable card system) -->
+            <div class="values-grid">
+                
+                <!-- Value Card 1 -->
+                <div class="value-card">
+                    <h4 class="value-card-title">Qualität</h4>
+                    <p class="value-card-description">
+                        Jede Produktion erfüllt höchste Qualitätsstandards. 
+                        Perfektion in jedem Detail ist unser Anspruch.
+                    </p>
+                </div>
+                
+                <!-- Value Card 2 -->
+                <div class="value-card">
+                    <h4 class="value-card-title">Präzision</h4>
+                    <p class="value-card-description">
+                        Farbgenauigkeit, Schnittkanten, Verarbeitung – 
+                        alles wird kontrolliert und optimiert.
+                    </p>
+                </div>
+                
+                <!-- Value Card 3 -->
+                <div class="value-card">
+                    <h4 class="value-card-title">Regionalität</h4>
+                    <p class="value-card-description">
+                        Wir sind lokal verankert und persönlich erreichbar. 
+                        Schnelle Reaktion auf Ihre Anfragen.
+                    </p>
+                </div>
+                
+                <!-- Value Card 4 -->
+                <div class="value-card">
+                    <h4 class="value-card-title">Beratung</h4>
+                    <p class="value-card-description">
+                        Unsere Experten unterstützen Sie von der Idee bis zur 
+                        fertigen Produktion.
+                    </p>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Metrics Section -->
+        <div class="about-section">
+            
+            <!-- Section Label -->
+            <p class="about-label">
+                Unsere Leistung
+            </p>
+            
+            <!-- Section Headline -->
+            <h3 class="about-section-headline">
+                Zahlen, die sprechen
+            </h3>
+            
+            <!-- Metrics Grid (Reusable card system) -->
+            <div class="metrics-grid">
+                
+                <!-- Metric Card 1 -->
+                <div class="metric-card">
+                    <div class="metric-number">30+</div>
+                    <div class="metric-label">Jahre<br>Erfahrung</div>
+                </div>
+                
+                <!-- Metric Card 2 -->
+                <div class="metric-card">
+                    <div class="metric-number">5000+</div>
+                    <div class="metric-label">Zufriedene<br>Kunden</div>
+                </div>
+                
+                <!-- Metric Card 3 -->
+                <div class="metric-card">
+                    <div class="metric-number">20000+</div>
+                    <div class="metric-label">Erfolgreiche<br>Projekte</div>
+                </div>
+                
+                <!-- Metric Card 4 -->
+                <div class="metric-card">
+                    <div class="metric-number">100%</div>
+                    <div class="metric-label">Qualitäts-<br>versprechen</div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+

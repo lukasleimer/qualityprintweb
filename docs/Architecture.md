@@ -221,31 +221,141 @@ result = send_contact_email(data)
 - Einfache Template-Updates
 - DRY Prinzip
 
-### 5. CSS Cascading Architecture
+### 5. CSS Architecture (Consolidated – Sprint 2)
 
-**Ziel**: Wartbare, skalierbare CSS
+**Ziel**: Wartbare, skalierbare CSS mit zentralem Import-Management
+
+**CSS Load Order** (in `style.css`):
 
 ```css
-/* Layer 1: Variables */
-:root { --primary-color: ... }
+/* 1. RESETS (Normalize Browser Defaults) */
+@import url('./reset.css');              /* HTML5 element resets, box-sizing */
 
-/* Layer 2: Reset */
-* { margin: 0; padding: 0; }
+/* 2. TYPOGRAPHY (Base Text Styles) */
+@import url('./typography.css');         /* Font styles, display classes */
 
-/* Layer 3: Typography */
-body { font: ... }
+/* 3. LAYOUT (Grid & Container System) */
+@import url('./layout.css');             /* Containers, grids, flex, spacing */
 
-/* Layer 4: Layout */
-.container { display: grid; }
+/* 4. UTILITIES (Helper Classes) */
+@import url('./utilities.css');          /* Text, colors, borders, shadows */
 
-/* Layer 5: Components */
-.card { ... }
+/* 5. SECTION-SPECIFIC (Component Styles) */
+@import url('./navbar.css');
+@import url('./hero.css');
+@import url('./about.css');
+@import url('./services.css');
+@import url('./quality.css');
+@import url('./references.css');
+@import url('./sustainability.css');
+@import url('./contact-preview.css');
+@import url('./contact.css');
+@import url('./footer.css');
+```
 
-/* Layer 6: Utilities */
-.text-center { text-align: center; }
+**Cascade Explanation**:
 
-/* Layer 7: Media Queries */
-@media { ... }
+| Priority | Layer | Purpose | Specificity |
+|----------|-------|---------|-------------|
+| 1 | Reset | Browser defaults removed | Low |
+| 2 | Typography | Font families, sizes, weights | Low |
+| 3 | Layout | Containers, grids, flex | Medium |
+| 4 | Utilities | Helper classes (.text-center, etc) | Medium-High |
+| 5 | Components | Section/component styles | High |
+
+**Benefits**:
+- Single import point (`style.css`)
+- Clear cascade hierarchy
+- Easy to debug (trace through imports)
+- Future-ready for CSS bundling
+- Reduced HTTP requests (11 → 2)
+
+---
+
+## 🎨 CSS System (Sprint 2 Foundation)
+
+### Container System
+
+Three ways to constrain content width:
+
+```html
+<!-- Standard (1280px max) - for most content -->
+<section class="section">
+    <div class="container">Content</div>
+</section>
+
+<!-- Wide (1440px max) - for complex layouts -->
+<section class="section">
+    <div class="container container--wide">Content</div>
+</section>
+
+<!-- Narrow (960px max) - for text-heavy content -->
+<section class="section">
+    <div class="container container--narrow">Content</div>
+</section>
+
+<!-- Full Width - for hero/backgrounds -->
+<section class="section container--full">Content</section>
+```
+
+### Grid System
+
+```html
+<!-- 3-column grid (responsive) -->
+<div class="grid grid-cols-3 gap-8">
+    <div>Column 1</div>
+    <div>Column 2</div>
+    <div>Column 3</div>
+</div>
+
+<!-- Auto-responsive grid (cards) -->
+<div class="grid grid-cols-auto">
+    <div class="card">Card 1</div>
+    <div class="card">Card 2</div>
+    <div class="card">Card 3</div>
+</div>
+
+<!-- Equal height cards -->
+<div class="grid grid-cols-3 grid-cards">
+    <article>
+        <img src="..." alt="...">
+        <h3>Title</h3>
+        <p>Content</p>
+        <button>Action</button>  <!-- Pushed to bottom -->
+    </article>
+</div>
+```
+
+### Spacing System
+
+```html
+<!-- Standard section spacing (64px mobile → 48px on small) -->
+<section class="section">Content</section>
+
+<!-- Variants -->
+<section class="section--sm">Compact (48px)</section>
+<section class="section--lg">Large (80px)</section>
+<section class="section--xl">Extra Large (112px)</section>
+```
+
+### Responsive Breakpoints
+
+| Breakpoint | Width | Usage |
+|-----------|-------|-------|
+| Mobile | 320px-639px | Base styles (no prefix) |
+| Tablet | 640px-767px | `.sm:*` classes |
+| Tablet/Desktop | 768px-1023px | `.md:*` classes |
+| Desktop | 1024px-1279px | `.lg:*` classes |
+| Large Desktop | 1280px-1535px | `.xl:*` classes |
+| Extra Large | 1536px+ | `.2xl:*` classes |
+
+Example responsive grid:
+
+```html
+<!-- Mobile: 1 column, Tablet: 2 columns, Desktop: 3 columns -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <!-- Responsive layout -->
+</div>
 ```
 
 ---

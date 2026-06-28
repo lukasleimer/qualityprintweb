@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Seite nicht gefunden - Quality Print{% endblock %}
+
+{% block content %}
+<section class="error-container error-404" style="padding-top: var(--space-20); padding-bottom: var(--space-20); text-align: center; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="container" style="max-width: 600px;">
+        <!-- Error Code -->
+        <h1 style="font-size: 6rem; color: var(--color-secondary); margin-bottom: var(--space-2); line-height: 1;">
+            404
+        </h1>
+        
+        <!-- Error Headline -->
+        <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: var(--space-4);">
+            Seite nicht gefunden
+        </h2>
+        
+        <!-- Error Description -->
+        <p style="font-size: 1.125rem; color: var(--color-neutral-600); margin-bottom: var(--space-6); line-height: 1.6;">
+            Die gesuchte Seite existiert leider nicht oder wurde verschoben.
+            Überprüfen Sie die URL und versuchen Sie es erneut.
+        </p>
+        
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('home.index') }}" class="btn btn-primary">
+                Zur Startseite
+            </a>
+            <a href="{{ url_for('kontakt.kontakt') }}" class="btn btn-secondary">
+                Kontakt
+            </a>
+        </div>
+        
+        <!-- Help Text -->
+        <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-neutral-200);">
+            <p style="color: var(--color-neutral-600); font-size: 0.875rem;">
+                Benötigen Sie Hilfe? 
+                <a href="tel:+43512123456" style="color: var(--color-secondary); text-decoration: underline;">
+                    Rufen Sie uns an
+                </a>
+                oder 
+                <a href="mailto:kontakt@qualityprint.at" style="color: var(--color-secondary); text-decoration: underline;">
+                    schreiben Sie uns
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}
