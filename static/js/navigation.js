@@ -1,76 +1,142 @@
 /* ============================================================================
-   NAVIGATION INTERACTIONS
+   PREMIUM HEADER NAVIGATION – INTERACTIONS & SCROLL EFFECTS
    ============================================================================
    
-   Handles mobile navigation toggle and scroll effects.
-   Progressive enhancement - works without JavaScript but enhanced with it.
+   Sprint D2.1: Premium Header Redesign
+   
+   Handles:
+   - Sticky header behavior (hide top info layer on scroll)
+   - Mobile hamburger menu toggle
+   - Navigation link active states
+   - Scroll shadow effects
+   - Keyboard navigation
+   - Accessibility (ARIA attributes)
+   
+   Progressive enhancement - graceful fallback without JavaScript.
    
 ============================================================================ */
 
 'use strict';
 
 (function() {
-    // Configuration
-    const SCROLL_THRESHOLD = 20;
-    const SCROLL_CLASS = 'is-scrolled';
+    // ========================================================================
+    // CONFIGURATION
+    // ========================================================================
     
-    // DOM Elements
-    const navbar = document.querySelector('.navbar');
-    const navToggle = document.getElementById('navbarToggle');
-    const navMobile = document.getElementById('navbarMobile');
-    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+    const SCROLL_THRESHOLD = 50;  // Hide top layer after this many px
+    const SCROLL_SHADOW_THRESHOLD = 5;  // Show shadow after this many px
+    
+    // ========================================================================
+    // DOM ELEMENTS
+    // ========================================================================
+    
+    const header = document.querySelector('.header');
+    const headerTop = document.getElementById('headerTop');
+    const headerNav = document.querySelector('.header-nav');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const allNavLinks = document.querySelectorAll('.nav-link');
     
     // Guard: Ensure elements exist
-    if (!navbar || !navToggle || !navMobile) {
-        console.warn('Navigation elements not found');
+    if (!header || !headerTop || !headerNav || !navToggle || !navLinks) {
+        console.warn('Header elements not found');
         return;
     }
     
     // ========================================================================
-    // 1. MOBILE MENU TOGGLE
+    // 1. SCROLL HANDLING – Sticky Header Effects
+    // ========================================================================
+    
+    let lastScrollY = 0;
+    let ticking = false;
+    
+    /**
+     * Handle scroll events (requestAnimationFrame optimized)
+     */
+    function handleScroll() {
+        const scrollY = window.scrollY;
+        
+        // Hide header-top after scroll threshold
+        if (scrollY > SCROLL_THRESHOLD) {
+            headerTop.classList.add('is-hidden');
+            header.classList.add('is-sticky');
+        } else {
+            headerTop.classList.remove('is-hidden');
+            header.classList.remove('is-sticky');
+        }
+        
+        // Show shadow on header-nav after scroll
+        if (scrollY > SCROLL_SHADOW_THRESHOLD) {
+            headerNav.classList.add('is-scrolled');
+        } else {
+            headerNav.classList.remove('is-scrolled');
+        }
+        
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+    
+    /**
+     * Optimize scroll event with requestAnimationFrame
+     */
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    }
+    
+    // Add scroll listener
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    // ========================================================================
+    // 2. MOBILE HAMBURGER MENU
     // ========================================================================
     
     /**
      * Toggle mobile navigation menu
      */
     function toggleMobileMenu() {
-        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
         
-        navToggle.setAttribute('aria-expanded', !isExpanded);
-        navMobile.setAttribute('aria-hidden', isExpanded);
+        navToggle.setAttribute('aria-expanded', !isOpen);
+        navLinks.setAttribute('aria-expanded', !isOpen);
+        navToggle.classList.toggle('is-open');
+        navLinks.classList.toggle('is-open');
         
-        if (!isExpanded) {
-            // Opening menu
+        // Prevent scroll when menu is open
+        if (!isOpen) {
             document.body.style.overflow = 'hidden';
-            navMobile.focus();
         } else {
-            // Closing menu
             document.body.style.overflow = '';
-            navToggle.focus();
         }
     }
     
     /**
-     * Close mobile menu
+     * Close mobile navigation menu
      */
     function closeMobileMenu() {
         navToggle.setAttribute('aria-expanded', 'false');
-        navMobile.setAttribute('aria-hidden', 'true');
+        navLinks.setAttribute('aria-expanded', 'false');
+        navToggle.classList.remove('is-open');
+        navLinks.classList.remove('is-open');
         document.body.style.overflow = '';
-        navToggle.focus();
     }
     
     /**
-     * Handle menu toggle click
+     * Toggle menu on button click
      */
-    navToggle.addEventListener('click', toggleMobileMenu);
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+    });
     
     /**
-     * Close menu when link is clicked
+     * Close menu when navigation link is clicked
      */
-    navLinks.forEach(link => {
+    allNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Only close if on mobile
+            // Close on mobile
             if (window.innerWidth < 768) {
                 closeMobileMenu();
             }
@@ -94,10 +160,74 @@
      */
     document.addEventListener('click', (e) => {
         const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-        if (!navbar.contains(e.target) && isOpen) {
+        if (!header.contains(e.target) && isOpen) {
             closeMobileMenu();
         }
     });
+    
+    /**
+     * Close menu on window resize (back to desktop)
+     */
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            closeMobileMenu();
+        }
+    });
+    
+    // ========================================================================
+    // 3. NAVIGATION ACTIVE STATE
+    // ========================================================================
+    
+    /**
+     * Update active navigation link based on current page
+     */
+    function updateActiveNavLink() {
+        const currentPath = window.location.pathname;
+        
+        allNavLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            
+            // Remove active class from all links
+            link.classList.remove('is-active');
+            
+            // Add active class to current page link
+            if (href === currentPath || (href === '/' && currentPath === '/')) {
+                link.classList.add('is-active');
+            }
+        });
+    }
+    
+    // Update active state on page load
+    updateActiveNavLink();
+    
+    // ========================================================================
+    // 4. CLOSE MENU ON LINK CLICK FOR INTERNAL NAVIGATION
+    // ========================================================================
+    
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Small delay to allow navigation before closing
+            setTimeout(() => {
+                updateActiveNavLink();
+            }, 100);
+        });
+    });
+    
+    // ========================================================================
+    // INITIALIZATION
+    // ========================================================================
+    
+    // Trigger initial scroll check on page load
+    handleScroll();
+    
+    // Expose functions for potential external use
+    window.navigationAPI = {
+        toggleMenu: toggleMobileMenu,
+        closeMenu: closeMobileMenu,
+        updateActive: updateActiveNavLink
+    };
+})();
+
     
     // ========================================================================
     // 2. STICKY NAVBAR SHADOW ON SCROLL

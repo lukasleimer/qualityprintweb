@@ -33,7 +33,7 @@
 @import url('./buttons.css');
 
 /* 7. Section-Specific Styles (loaded after utilities for specificity) */
-@import url('./navbar.css');
+@import url('./header.css');
 @import url('./hero.css');
 @import url('./about.css');
 @import url('./services.css');

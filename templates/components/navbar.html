@@ -1,82 +1,90 @@
-<!-- Premium Navigation Bar -->
-<header class="navbar" role="banner">
-    <div class="container navbar-container">
-        <!-- Logo Section (Left) -->
-        <div class="navbar-logo">
-            <a href="/" class="logo-link" title="Quality Print - Premium Druckdienstleistungen">
-                <h1 class="logo-text">Quality Print</h1>
-            </a>
-        </div>
-        
-        <!-- Navigation Menu (Center) -->
-        <nav class="navbar-nav" role="navigation" aria-label="Hauptnavigation">
-            <!-- Mobile Menu Toggle -->
-            <button 
-                class="navbar-toggle" 
-                id="navbarToggle" 
-                aria-expanded="false"
-                aria-label="Navigationsmenü öffnen"
-                title="Menü"
-            >
-                <span class="toggle-icon">
-                    <span class="toggle-line"></span>
-                    <span class="toggle-line"></span>
-                    <span class="toggle-line"></span>
-                </span>
-            </button>
-            
-            <!-- Navigation Links -->
-            <ul class="navbar-links" id="navbarLinks">
-                <li class="nav-item">
-                    <a href="/" class="nav-link" data-active="true">Startseite</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link">Leistungen</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#quality" class="nav-link">Produkte</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">Über uns</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/kontakt" class="nav-link">Kontakt</a>
-                </li>
-            </ul>
-        </nav>
-        
-        <!-- CTA Button Section (Right) -->
-        <div class="navbar-cta">
-            <a href="/kontakt" class="btn btn-primary btn-sm" title="Angebot anfordern">
-                Angebot anfordern
-            </a>
+<!-- Premium Header - Two-Level Navigation -->
+<header class="header" role="banner">
+    
+    <!-- Upper Level: Company Info (Desktop/Tablet) -->
+    <div class="header-top" id="headerTop" aria-hidden="false">
+        <div class="container">
+            <div class="header-top-content">
+                <!-- Left: Contact Info -->
+                <div class="header-contact-left">
+                    <a href="tel:+43512123456" class="contact-link" title="Anrufen">
+                        <span class="contact-icon">📞</span>
+                        <span class="contact-text">+43 512 123456</span>
+                    </a>
+                    <a href="mailto:kontakt@qualityprint.at" class="contact-link" title="Email schreiben">
+                        <span class="contact-icon">✉️</span>
+                        <span class="contact-text">kontakt@qualityprint.at</span>
+                    </a>
+                </div>
+                
+                <!-- Center: Logo -->
+                <div class="header-logo-center">
+                    <a href="/" class="logo-link" title="Quality Print - Startseite">
+                        <svg class="logo-icon" viewBox="0 0 200 80" aria-hidden="true">
+                            <circle cx="40" cy="40" r="35" fill="currentColor" opacity="0.2"/>
+                            <text x="100" y="50" font-size="32" font-weight="700" fill="currentColor">Quality Print</text>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Right: Address -->
+                <div class="header-contact-right">
+                    <address class="contact-address">
+                        <span class="address-line">Mustergasse 123</span>
+                        <span class="address-line">6020 Innsbruck</span>
+                    </address>
+                </div>
+            </div>
         </div>
     </div>
     
-    <!-- Mobile Navigation Overlay -->
-    <nav class="navbar-mobile" id="navbarMobile" aria-hidden="true">
-        <ul class="mobile-links">
-            <li class="mobile-nav-item">
-                <a href="/" class="mobile-nav-link">Startseite</a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#services" class="mobile-nav-link">Leistungen</a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#quality" class="mobile-nav-link">Produkte</a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="#about" class="mobile-nav-link">Über uns</a>
-            </li>
-            <li class="mobile-nav-item">
-                <a href="/kontakt" class="mobile-nav-link">Kontakt</a>
-            </li>
-            <li class="mobile-nav-divider"></li>
-            <li class="mobile-nav-item">
-                <a href="/kontakt" class="mobile-nav-cta btn btn-primary btn-block">
-                    Angebot anfordern
-                </a>
-            </li>
-        </ul>
+    <!-- Lower Level: Navigation Bar -->
+    <nav class="header-nav" role="navigation" aria-label="Hauptnavigation">
+        <div class="container">
+            <div class="header-nav-content">
+                
+                <!-- Mobile: Logo Left -->
+                <div class="header-logo-mobile">
+                    <a href="/" class="logo-link-mobile" title="Quality Print - Startseite">
+                        <h1 class="logo-text-mobile">QP</h1>
+                    </a>
+                </div>
+                
+                <!-- Navigation Links -->
+                <ul class="nav-links" id="navLinks" aria-expanded="false">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link" data-section="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link" data-section="services">Leistungen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#quality" class="nav-link" data-section="products">Produkte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link" data-section="about">Über Uns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/kontakt" class="nav-link" data-section="contact">Kontakt</a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile: Hamburger Menu -->
+                <button 
+                    class="nav-toggle" 
+                    id="navToggle" 
+                    aria-expanded="false"
+                    aria-label="Navigationsmenü öffnen"
+                    aria-controls="navLinks"
+                >
+                    <span class="hamburger">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
     </nav>
+    
 </header>

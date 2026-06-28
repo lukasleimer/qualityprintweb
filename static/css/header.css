@@ -1,0 +1,566 @@
+/* ============================================================================
+   HEADER – PREMIUM TWO-LEVEL NAVIGATION DESIGN
+   ============================================================================
+   
+   Sprint D2.1 – Premium Header Redesign
+   
+   Design Principles:
+   - Two-level header structure
+   - Premium, minimalist aesthetic
+   - Generous whitespace
+   - Smooth sticky behavior
+   - Responsive adaptation
+   - Accessibility-first
+   
+   Structure:
+   - .header-top: Company info (desktop/tablet)
+   - .header-nav: Navigation bar (sticky)
+   - Smooth fade out of header-top on scroll
+   - Mobile: Single level with hamburger menu
+   
+============================================================================ */
+
+/* ============================================================================
+   0. CSS VARIABLES (used throughout)
+   ============================================================================ */
+
+:root {
+  /* Header dimensions */
+  --header-top-height: 80px;
+  --header-nav-height: 70px;
+  --header-total-height: calc(var(--header-top-height) + var(--header-nav-height));
+  
+  /* Animations */
+  --header-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --header-transition-short: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================================
+   1. HEADER BASE STYLES
+   ============================================================================ */
+
+.header {
+  position: relative;
+  z-index: var(--z-sticky);
+  background-color: var(--color-neutral-50);
+}
+
+/* ============================================================================
+   2. HEADER TOP LAYER (Company Info)
+   ============================================================================ */
+
+.header-top {
+  background-color: var(--color-neutral-50);
+  border-bottom: 1px solid var(--color-neutral-200);
+  height: var(--header-top-height);
+  display: flex;
+  align-items: center;
+  
+  /* Sticky behavior transition */
+  transition: all var(--header-transition);
+  transform: translateY(0);
+  opacity: 1;
+  
+  /* Will be hidden when sticky */
+}
+
+.header-top.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--header-transition) ease-in;
+}
+
+.header-top-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+/* ============================================================================
+   3. HEADER TOP: CONTACT INFO
+   ============================================================================ */
+
+.header-contact-left,
+.header-contact-right {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.header-contact-left {
+  justify-content: flex-start;
+}
+
+.header-contact-right {
+  justify-content: flex-end;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all var(--header-transition-short);
+  white-space: nowrap;
+  
+  /* Hover effect */
+  &:hover {
+    color: var(--color-secondary);
+    transform: translateX(2px);
+  }
+  
+  /* Focus state */
+  &:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.contact-icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-text {
+  display: inline;
+}
+
+.contact-address {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-style: normal;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  line-height: 1.4;
+}
+
+.address-line {
+  display: block;
+}
+
+/* ============================================================================
+   4. HEADER TOP: LOGO CENTER
+   ============================================================================ */
+
+.header-logo-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  
+  /* Transition for sticky state */
+  transition: transform var(--header-transition);
+}
+
+.logo-link:hover {
+  opacity: 0.8;
+}
+
+.logo-link:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.logo-icon {
+  width: 180px;
+  height: 60px;
+  color: var(--color-primary);
+  
+  /* Smooth scaling on sticky state */
+  transition: width var(--header-transition), height var(--header-transition);
+}
+
+/* Sticky state: reduce logo size */
+.header.is-sticky .logo-icon {
+  width: 150px;
+  height: 50px;
+}
+
+/* ============================================================================
+   5. HEADER NAVIGATION BAR (Lower Level)
+   ============================================================================ */
+
+.header-nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-neutral-50);
+  border-bottom: 1px solid var(--color-neutral-200);
+  height: var(--header-nav-height);
+  display: flex;
+  align-items: center;
+  
+  /* Smooth transition for shadow */
+  transition: box-shadow var(--header-transition), border-color var(--header-transition);
+  box-shadow: none;
+}
+
+.header-nav.is-scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-bottom-color: var(--color-neutral-300);
+}
+
+.header-nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: var(--space-8);
+}
+
+/* ============================================================================
+   6. HEADER NAVIGATION: LOGO MOBILE
+   ============================================================================ */
+
+.header-logo-mobile {
+  display: none; /* Hidden on desktop */
+  flex-shrink: 0;
+}
+
+.logo-link-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  transition: all var(--header-transition-short);
+  
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+  }
+}
+
+.logo-text-mobile {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* ============================================================================
+   7. NAVIGATION LINKS (Desktop Layout)
+   ============================================================================ */
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-8);
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  
+  /* Smooth transitions */
+  transition: all var(--header-transition-short);
+  position: relative;
+  
+  /* Underline effect */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transform: translateX(-50%);
+    transition: width var(--header-transition-short);
+  }
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--color-secondary);
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 24px;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Active state indicator */
+.nav-link[href="/"] {
+  /* Home is active on homepage - can be controlled via JS */
+}
+
+.nav-link.is-active {
+  color: var(--color-secondary);
+  
+  &::after {
+    width: 24px;
+  }
+}
+
+/* ============================================================================
+   8. MOBILE HAMBURGER MENU
+   ============================================================================ */
+
+.nav-toggle {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--header-transition-short);
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+  height: 20px;
+  position: relative;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: all var(--header-transition-short);
+  transform-origin: center;
+}
+
+/* Hamburger animation: X form when open */
+.nav-toggle.is-open {
+  .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* ============================================================================
+   9. RESPONSIVE: TABLET (768px to 1024px)
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  :root {
+    --header-top-height: 70px;
+    --header-nav-height: 60px;
+  }
+  
+  .header-top-content {
+    gap: var(--space-6);
+  }
+  
+  .header-contact-left,
+  .header-contact-right {
+    gap: var(--space-3);
+  }
+  
+  .contact-text {
+    display: none; /* Hide text labels on tablet */
+  }
+  
+  .nav-links {
+    gap: var(--space-6);
+  }
+  
+  .logo-icon {
+    width: 160px;
+    height: 50px;
+  }
+}
+
+/* ============================================================================
+   10. RESPONSIVE: MOBILE (< 768px)
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --header-top-height: 0px;
+    --header-nav-height: 60px;
+  }
+  
+  /* Hide header top on mobile */
+  .header-top {
+    display: none;
+  }
+  
+  /* Show mobile logo */
+  .header-logo-mobile {
+    display: block;
+  }
+  
+  /* Show hamburger menu */
+  .nav-toggle {
+    display: flex;
+    flex-shrink: 0;
+  }
+  
+  /* Mobile navigation links - hide by default */
+  .nav-links {
+    position: fixed;
+    top: var(--header-nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--color-neutral-50);
+    border-bottom: 1px solid var(--color-neutral-200);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    
+    /* Hidden by default */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all var(--header-transition);
+    pointer-events: none;
+    
+    /* Prevent scrolling behind menu */
+    z-index: calc(var(--z-sticky) - 1);
+  }
+  
+  /* Mobile navigation links - open state */
+  .nav-links.is-open {
+    max-height: 100vh;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .nav-item {
+    width: 100%;
+  }
+  
+  .nav-link {
+    padding: var(--space-4) var(--space-3);
+    font-size: var(--font-size-lg);
+    
+    &::after {
+      bottom: 12px;
+    }
+  }
+}
+
+/* ============================================================================
+   11. SMALL MOBILE (< 480px)
+   ============================================================================ */
+
+@media (max-width: 480px) {
+  .logo-link-mobile {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .nav-links {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+  
+  .nav-link {
+    padding: var(--space-3);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ============================================================================
+   12. ACCESSIBILITY: Reduced Motion
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .header-top,
+  .header-nav,
+  .contact-link,
+  .nav-link,
+  .nav-toggle,
+  .hamburger-line,
+  .logo-link,
+  .logo-icon {
+    transition: none !important;
+  }
+  
+  .hamburger-line {
+    transform: none !important;
+  }
+}
+
+/* ============================================================================
+   13. HIGH CONTRAST MODE
+   ============================================================================ */
+
+@media (prefers-contrast: more) {
+  .header-top {
+    border-bottom-width: 2px;
+  }
+  
+  .header-nav {
+    border-bottom-width: 2px;
+  }
+  
+  .nav-link::after {
+    height: 3px;
+  }
+  
+  .hamburger-line {
+    height: 3px;
+  }
+}
