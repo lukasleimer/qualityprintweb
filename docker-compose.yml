@@ -1,0 +1,61 @@
+version: '3.9'
+
+services:
+  qualityprint:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qualityprint-app
+    
+    # Environment configuration
+    env_file:
+      - .env
+    
+    # Port mapping
+    ports:
+      - "127.0.0.1:8000:8000"
+    
+    # Volume mounts for persistence
+    volumes:
+      # Instance folder (database)
+      - ./instance:/app/instance
+      # Logs folder
+      - ./logs:/app/logs
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Health check (defined in Dockerfile as well)
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Networks
+networks:
+  default:
+    driver: bridge
+
+# Volumes (defined for explicit documentation)
+volumes:
+  instance:
+  logs:
