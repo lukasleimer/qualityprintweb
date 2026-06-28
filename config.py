@@ -37,12 +37,12 @@ class Config:
 class DevelopmentConfig(Config):
     """Development configuration"""
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///instance/messages.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///messages.db'  # Resolved in create_app()
 
 class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///instance/messages.db')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///messages.db')  # Resolved in create_app()
 
 class TestingConfig(Config):
     """Testing configuration"""

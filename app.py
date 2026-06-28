@@ -17,6 +17,20 @@ def create_app(config_name=None):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     
+    # Fix SQLite database URI to use absolute paths with instance_path
+    db_uri = app.config.get('SQLALCHEMY_DATABASE_URI', '')
+    if db_uri.startswith('sqlite:///') and not db_uri.startswith('sqlite:////'):  # Check if relative
+        # Extract just the filename (e.g., 'messages.db')
+        db_filename = os.path.basename(db_uri)
+        # Create absolute path in Flask's instance folder
+        db_abs_path = os.path.join(app.instance_path, db_filename)
+        # Convert to SQLite URI (normalize paths for cross-platform compatibility)
+        # Use forward slashes for URI format
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.normpath(db_abs_path).replace(os.sep, '/')
+    
+    # Ensure instance folder exists
+    os.makedirs(app.instance_path, exist_ok=True)
+    
     # Initialize database
     db.init_app(app)
     
@@ -27,10 +41,6 @@ def create_app(config_name=None):
     generate_secure_headers(app)
     
     with app.app_context():
-        # Create instance folder if it doesn't exist
-        instance_path = os.path.join(os.path.dirname(__file__), 'instance')
-        os.makedirs(instance_path, exist_ok=True)
-        
         try:
             # Create database tables
             db.create_all()
