@@ -3,32 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Quality Print - Professionelle Druckdienstleistungen für Premium-Qualität">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <title>{% block title %}Quality Print - Professionelle Druckdienstleistungen{% endblock %}</title>
     
-    <!-- CSS -->
+    <!-- ===== STYLESHEETS (in order of specificity) ===== -->
+    
+    <!-- 1. DESIGN TOKENS (must be first!) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+    
+    <!-- 2. GLOBAL STYLES & BASE COMPONENTS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- 3. TYPOGRAPHY UTILITIES -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/typography.css') }}">
+    
+    <!-- 4. LAYOUT, GRID & SPACING -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    
+    <!-- 5. SECTION-SPECIFIC STYLES -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     
+    <!-- 6. UTILITY CLASSES & HELPERS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
+    
+    <!-- Extra CSS per page -->
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- ===== NAVIGATION ===== -->
     {% include 'components/navbar.html' %}
     
-    <!-- Main Content -->
+    <!-- ===== MAIN CONTENT ===== -->
     <main>
         {% block content %}{% endblock %}
     </main>
     
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     {% include 'components/footer.html' %}
     
-    <!-- Scripts -->
+    <!-- ===== SCRIPTS ===== -->
     <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
     {% block extra_js %}{% endblock %}
 </body>
